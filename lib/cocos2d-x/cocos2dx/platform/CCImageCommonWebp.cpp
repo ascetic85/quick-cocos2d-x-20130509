@@ -24,7 +24,11 @@
 
 #include "platform/CCImage.h"
 #include "textures/CCTexture2D.h"
+#ifdef __native_client__
 #include "platform/third_party/common/webp/webp/decode.h"
+#else
+#include "decode.h"
+#endif
 #include "ccMacros.h"
 #include <stdlib.h>
 #include <stdio.h>
