@@ -24,6 +24,8 @@ THE SOFTWARE.
 #include "platform/CCCommon.h"
 #include "CCStdC.h"
 
+#include <QDebug>
+
 NS_CC_BEGIN
 
 #define MAX_LEN         (cocos2d::kMaxLogLen + 1)
@@ -31,6 +33,13 @@ NS_CC_BEGIN
 void CCLog(const char * pszFormat, ...)
 {
     // do nothing
+    char szBuf[MAX_LEN];
+
+    va_list ap;
+    va_start(ap, pszFormat);
+    vsnprintf_s(szBuf, MAX_LEN, MAX_LEN, pszFormat, ap);
+    va_end(ap);
+    qDebug(szBuf);
 }
 
 void CCMessageBox(const char * pszMsg, const char * pszTitle)

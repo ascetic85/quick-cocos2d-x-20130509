@@ -52,6 +52,7 @@ public:
     virtual void swapBuffers();
     virtual void setFrameSize(float width, float height);
     virtual void setIMEKeyboardState(bool bOpen);
+    virtual void setViewName(const char* pszViewName);
 
     // Qt
     void mouseMove(QMouseEvent *event);

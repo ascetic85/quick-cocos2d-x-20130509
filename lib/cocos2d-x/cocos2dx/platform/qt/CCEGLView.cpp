@@ -221,6 +221,8 @@ bool CCEGLView::Create()
         m_window->setFixedSize(iWidth, iHeight);
         m_window->show();
 
+        m_window->setWindowTitle(getViewName());
+
         bRet = initGL();
         if(!bRet) destroyGL();
         CC_BREAK_IF(!bRet);
@@ -262,6 +264,14 @@ void CCEGLView::swapBuffers()
 void CCEGLView::setIMEKeyboardState(bool /*bOpen*/)
 {
 
+}
+
+void CCEGLView::setViewName(const char* pszViewName)
+{
+    CCEGLViewProtocol::setViewName(pszViewName);
+    if (m_window) {
+        m_window->setWindowTitle(getViewName());
+    }
 }
 
 void CCEGLView::resize(int width, int height)
