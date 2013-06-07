@@ -129,6 +129,7 @@ CCEGLView::CCEGLView()
 , m_bIsInit(false)
 , m_bIsSubWindow(false)
 , m_window(NULL)
+, m_fScreenScaleFactor(1.0f)
 {
     m_pTouch = new CCTouch;
     m_pSet = new CCSet;
@@ -224,6 +225,7 @@ bool CCEGLView::Create()
         if(!bRet) destroyGL();
         CC_BREAK_IF(!bRet);
 
+        m_bIsInit = true;
         bRet = true;
     } while (0);
 

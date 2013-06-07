@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
 
     cocos2d::CCEGLView* eglView = cocos2d::CCEGLView::sharedOpenGLView();
     eglView->setViewName("rollerCactus");
-    eglView->setFrameSize(480*2, 320*2);
+    eglView->setFrameSize(480, 320);
 //    eglView->setFrameSize(663,500);
 
     return cocos2d::CCApplication::sharedApplication()->run();
