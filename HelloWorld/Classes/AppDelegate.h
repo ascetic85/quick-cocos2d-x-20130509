@@ -2,6 +2,7 @@
 #define  _APP_DELEGATE_H_
 
 #include "cocos2d.h"
+#include "CCApplication.h"
 
 /**
 @brief    The cocos2d Application.
@@ -11,7 +12,7 @@ The reason for implement as private inheritance is to hide some interface call b
 class  AppDelegate : private cocos2d::CCApplication
 {
 public:
-    AppDelegate();
+    AppDelegate(int argc, char *argv[]);
     virtual ~AppDelegate();
 
     /**

@@ -6,7 +6,7 @@
 int main(int argc, char *argv[])
 {
     // create the application instance
-    AppDelegate app;
+    AppDelegate app(argc, argv);
 
     cocos2d::CCEGLView* eglView = cocos2d::CCEGLView::sharedOpenGLView();
     eglView->setViewName("rollerCactus");

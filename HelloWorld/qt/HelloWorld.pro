@@ -20,8 +20,10 @@ unix {
     LIBS += -L$(DESTDIR) -lcocos2d
 }
 
-DEFINES += WIN32 _WINDOWS
-#DEFINES += CC_UNDER_QT
+#DEFINES += WIN32 _WINDOWS
+DEFINES += _USRDLL
+DEFINES += __QT__
+DEFINES += CC_UNDER_QT
 
 INCLUDEPATH += ../../lib/cocos2d-x/cocos2dx/platform \
         ../../lib/cocos2d-x/cocos2dx/include \

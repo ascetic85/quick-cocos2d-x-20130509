@@ -128,6 +128,7 @@ CCEGLView::CCEGLView()
 , m_bSupportTouch(false)
 , m_bIsInit(false)
 , m_bIsSubWindow(false)
+, m_window(NULL)
 {
     m_pTouch = new CCTouch;
     m_pSet = new CCSet;
@@ -202,11 +203,9 @@ bool CCEGLView::Create()
     bool bRet = false;
     do
     {
-        s_pMainWindow = this;
+        CC_BREAK_IF(m_window);
 
-        bRet = initGL();
-		if(!bRet) destroyGL();
-        CC_BREAK_IF(!bRet);
+        s_pMainWindow = this;
 
         // Qt Window
         float iWidth = 320;
@@ -219,6 +218,11 @@ bool CCEGLView::Create()
 
         m_window->setWindowFlags(m_window->windowFlags()& ~Qt::WindowMaximizeButtonHint);
         m_window->setFixedSize(iWidth, iHeight);
+        m_window->show();
+
+        bRet = initGL();
+        if(!bRet) destroyGL();
+        CC_BREAK_IF(!bRet);
 
         bRet = true;
     } while (0);
@@ -260,7 +264,11 @@ void CCEGLView::setIMEKeyboardState(bool /*bOpen*/)
 
 void CCEGLView::resize(int width, int height)
 {
-
+    do
+    {
+        CC_BREAK_IF(!m_window);
+        m_window->setFixedSize(width, height);
+    } while(0);
 }
 
 void CCEGLView::setFrameZoomFactor(float fZoomFactor)

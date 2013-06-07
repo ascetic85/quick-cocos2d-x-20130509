@@ -1,10 +1,12 @@
 #include "AppDelegate.h"
 #include "HelloWorldScene.h"
+#include "CCEGLView.h"
 
 USING_NS_CC;
 
-AppDelegate::AppDelegate() {
-
+AppDelegate::AppDelegate(int argc, char *argv[])
+    : CCApplication(argc, argv)
+{
 }
 
 AppDelegate::~AppDelegate()

@@ -57,7 +57,7 @@ void GLWidget::mouseReleaseEvent(QMouseEvent *event)
 
 void GLWidget::update()
 {
-    glewInit();
+//    glewInit();
     makeCurrent();
 
     if (m_director)
