@@ -28,14 +28,8 @@ THE SOFTWARE.
 #include "platform/CCPlatformMacros.h"
 #include <float.h>
 
-// for math.h on win32 platform
-
 #if !defined(_USE_MATH_DEFINES)
     #define _USE_MATH_DEFINES       // make M_PI can be use
-#endif
-
-#if !defined(isnan)
-    #define isnan   _isnan
 #endif
 
 #ifndef snprintf
@@ -49,27 +43,42 @@ THE SOFTWARE.
 #include <stdlib.h>
 #include <time.h>
 
-// for MIN MAX and sys/time.h on win32 platform
+// Qt
+#include <QPainter>
+#include <QFontDatabase>
+#include <QtCore/QDateTime>
+#include <QtCore/qnumeric.h>
 
-#define MIN     min
-#define MAX     max
+#ifndef MIN
+#define MIN(x,y) (((x) > (y)) ? (y) : (x))
+#endif  // MIN
 
-#if _MSC_VER >= 1600
-    #include <stdint.h>
-#else
-    #include "./compat/stdint.h"
+#ifndef MAX
+#define MAX(x,y) (((x) < (y)) ? (y) : (x))
+#endif  // MAX
+
+#if ! defined(isnan)
+    #define isnan   qIsNaN
 #endif
 
-#define _WINSOCKAPI_
-// Structure timeval has define in winsock.h, include windows.h for it.
-#include <Windows.h>
-#include <WinSock2.h>
+#ifdef Q_OS_WIN
+#include <WinSock.h>    // for struct timeval
+#include "compat/stdint.h"
+#endif
 
 struct timezone
 {
     int tz_minuteswest;
     int tz_dsttime;
 };
+
+#ifdef _WIN32
+//struct timeval {
+//    long    tv_sec;         /* seconds */
+//    long    tv_usec;        /* and microseconds */
+//};
+#endif
+
 
 int CC_DLL gettimeofday(struct timeval *, struct timezone *);
 

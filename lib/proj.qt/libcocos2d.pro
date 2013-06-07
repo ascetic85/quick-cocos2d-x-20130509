@@ -8,8 +8,6 @@ QT       += core gui opengl
 
 TEMPLATE = lib
 
-CX_ROOT = ../cocos2d-x/cocos2dx
-
 include(actions.pri)
 include(base_nodes.pri)
 include(cocoa.pri)
@@ -39,7 +37,7 @@ win32 {
 
     # You may need to change this include directory
     DEFINES += WIN32
-    DEFINES += _WINDOWS
+#    DEFINES += _WINDOWS
     INCLUDEPATH += \
             ../cocos2d-x/cocos2dx/platform/third_party/win32/iconv \
             ../cocos2d-x/cocos2dx/platform/third_party/win32/zlib \
@@ -66,6 +64,7 @@ win32 {
     LIBS += -L../cocos2d-x/cocos2dx/platform/third_party/win32/libraries -llibwebp
     LIBS += -L../cocos2d-x/cocos2dx/platform/third_party/win32/libraries -lglew32
 
+    QMAKE_LFLAGS_DEBUG  = /DEBUG /NODEFAULTLIB:libcmt.lib
 }
 
 unix {

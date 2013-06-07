@@ -111,6 +111,7 @@ static voidpf ZCALLBACK fopen64_file_func (voidpf opaque, const void* filename, 
 
     if ((filename!=NULL) && (mode_fopen != NULL))
     {
+        // || CC_TARGET_PLATFORM == CC_PLATFORM_QT
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_MARMALADE || CC_TARGET_PLATFORM == CC_PLATFORM_BADA) || (CC_TARGET_PLATFORM == CC_PLATFORM_BLACKBERRY)
         file = NULL;
 #else

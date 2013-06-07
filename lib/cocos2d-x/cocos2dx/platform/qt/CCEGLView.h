@@ -25,16 +25,20 @@ THE SOFTWARE.
 #ifndef __CC_EGLVIEW_WIN32_H__
 #define __CC_EGLVIEW_WIN32_H__
 
+#include <QMouseEvent>
+
 #include "CCStdC.h"
 #include "platform/CCCommon.h"
 #include "cocoa/CCGeometry.h"
 #include "platform/CCEGLViewProtocol.h"
 
+
+class GLWidget;
+
 NS_CC_BEGIN
 
-typedef LRESULT (*CUSTOM_WND_PROC)(UINT message, WPARAM wParam, LPARAM lParam, BOOL* pProcessed);
-
 class CCEGL;
+class CCTouch;
 
 class CC_DLL CCEGLView : public CCEGLViewProtocol
 {
@@ -49,18 +53,17 @@ public:
     virtual void setFrameSize(float width, float height);
     virtual void setIMEKeyboardState(bool bOpen);
 
-    void setMenuResource(LPCWSTR menu);
-    void setWndProc(CUSTOM_WND_PROC proc);
+    // Qt
+    void mouseMove(QMouseEvent *event);
+    void mousePress(QMouseEvent *event);
+    void mouseRelease(QMouseEvent *event);
 
 private:
     virtual bool Create();
     bool initGL();
     void destroyGL();
 public:
-    virtual LRESULT WindowProc(UINT message, WPARAM wParam, LPARAM lParam);
 
-    // win32 platform function
-    HWND getHWnd();
     void resize(int width, int height);
     /* 
      * Set zoom factor for frame. This method is for debugging big resolution (e.g.new ipad) app on desktop.
@@ -69,9 +72,6 @@ public:
 	float getFrameZoomFactor();
     void centerWindow();
     void moveWindow(int left, int top);
-
-    typedef void (*LPFN_ACCELEROMETER_KEYHOOK)( UINT message,WPARAM wParam, LPARAM lParam );
-    void setAccelerometerKeyHook( LPFN_ACCELEROMETER_KEYHOOK lpfnAccelerometerKeyHook );
 
     virtual void setViewPortInPoints(float x , float y , float w , float h);
     virtual void setScissorInPoints(float x , float y , float w , float h);
@@ -86,17 +86,16 @@ public:
 protected:
 
 private:
+    bool m_bIsInit;
     bool m_bCaptured;
-    HWND m_hWnd;
-    HDC  m_hDC;
-    HGLRC m_hRC;
-    LPFN_ACCELEROMETER_KEYHOOK m_lpfnAccelerometerKeyHook;
     bool m_bSupportTouch;
-
-    LPCWSTR m_menu;
-    CUSTOM_WND_PROC m_wndproc;
-
     float m_fFrameZoomFactor;
+    float m_fScreenScaleFactor;
+
+    CCSet * m_pSet;
+    CCTouch * m_pTouch;
+    GLWidget* m_window;
+    bool m_bIsSubWindow;
 };
 
 NS_CC_END

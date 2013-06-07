@@ -6,14 +6,17 @@
 #include "platform/CCApplicationProtocol.h"
 #include <string>
 
+#undef CursorShape
+#include <QtGui/QApplication>
+
 NS_CC_BEGIN
 
 class CCRect;
 
-class CC_DLL CCApplication : public CCApplicationProtocol
+class CC_DLL CCApplication : public QApplication, public CCApplicationProtocol
 {
 public:
-    CCApplication();
+    CCApplication(int argc, char *argv[]);
     virtual ~CCApplication();
 
     /**
@@ -42,9 +45,7 @@ public:
     void setStartupScriptFilename(const std::string& startupScriptFile);
 
 protected:
-    HINSTANCE           m_hInstance;
-    HACCEL              m_hAccelTable;
-    LARGE_INTEGER       m_nAnimationInterval;
+    long long           m_nAnimationInterval;
     std::string         m_startupScriptFilename;
 
     static CCApplication * sm_pSharedApplication;

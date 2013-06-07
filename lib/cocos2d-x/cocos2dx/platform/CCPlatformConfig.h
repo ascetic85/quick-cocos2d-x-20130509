@@ -43,6 +43,7 @@ Config of cocos2d-x project, per target platform.
 #define CC_PLATFORM_BADA               6
 #define CC_PLATFORM_BLACKBERRY         7
 #define CC_PLATFORM_MAC                8
+#define CC_PLATFORM_QT                 9
 
 // Determine target platform by compile environment macro.
 #define CC_TARGET_PLATFORM             CC_PLATFORM_UNKNOWN
@@ -96,6 +97,11 @@ Config of cocos2d-x project, per target platform.
     #define CC_TARGET_PLATFORM     CC_PLATFORM_BLACKBERRY
 #endif
 
+// Qt
+#if defined(__QT__)
+#undef CC_TARGET_PLATFORM
+#define CC_TARGET_PLATFORM         CC_PLATFORM_QT
+#endif
 
 //////////////////////////////////////////////////////////////////////////
 // post configure

@@ -84,7 +84,7 @@ void HelloWorld::menuCloseCallback(CCObject* pSender)
 #endif
 }
 
-void HelloWorld::addSpriteRamdon(float dt)
+void HelloWorld::addSpriteRamdon(float /*dt*/)
 {
     CCSize size = CCDirector::sharedDirector()->getWinSize();
     CCSprite *pSprite = CCSprite::create("CloseNormal.png");

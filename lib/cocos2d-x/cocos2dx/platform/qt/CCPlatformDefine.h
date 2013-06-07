@@ -1,11 +1,22 @@
 #ifndef __CCPLATFORMDEFINE_H__
 #define __CCPLATFORMDEFINE_H__
 
-
-#if defined(_USRDLL)
-    #define CC_DLL     __declspec(dllexport)
-#else         /* use a DLL library */
-    #define CC_DLL     __declspec(dllimport)
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_QT)
+    #include <QtCore/qglobal.h>
+    #undef CC_DLL
+    #if defined(_USRDLL)
+        #define CC_DLL     __declspec(dllexport)
+//        #define CC_DLL     Q_DECL_EXPORT
+    #else 		/* use a DLL library */
+        #define CC_DLL     __declspec(dllimport)
+//        #define CC_DLL     Q_DECL_IMPORT
+    #endif
+#else
+    #if defined(_USRDLL)
+        #define CC_DLL     __declspec(dllexport)
+    #else         /* use a DLL library */
+        #define CC_DLL     __declspec(dllimport)
+    #endif
 #endif
 
 #include <assert.h>

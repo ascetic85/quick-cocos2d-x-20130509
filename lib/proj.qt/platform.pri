@@ -11,7 +11,8 @@ HEADERS += \
     ../cocos2d-x/cocos2dx/platform/CCSAXParser.h \
     ../cocos2d-x/cocos2dx/platform/CCThread.h \
     ../cocos2d-x/cocos2dx/platform/CCZipFile.h \
-    ../cocos2d-x/cocos2dx/platform/platform.h
+    ../cocos2d-x/cocos2dx/platform/platform.h \
+    ../cocos2d-x/cocos2dx/platform/qt/CCGLWidget.h
 
 SOURCES += \
     ../cocos2d-x/cocos2dx/platform/CCEGLViewProtocol.cpp \
@@ -27,4 +28,5 @@ SOURCES += \
     ../cocos2d-x/cocos2dx/platform/qt/CCEGLView.cpp \
     ../cocos2d-x/cocos2dx/platform/qt/CCFileUtilsWin32.cpp \
     ../cocos2d-x/cocos2dx/platform/qt/CCStdC.cpp \
-    ../cocos2d-x/cocos2dx/platform/qt/CCImage.cpp
+    ../cocos2d-x/cocos2dx/platform/qt/CCImage.cpp \
+    ../cocos2d-x/cocos2dx/platform/qt/CCGLWidget.cpp
