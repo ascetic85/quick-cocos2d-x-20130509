@@ -123,13 +123,13 @@ static void mouseRelease(QMouseEvent *event)
 }
 
 CCEGLView::CCEGLView()
-: m_bCaptured(false)
-, m_fFrameZoomFactor(1.0f)
-, m_bSupportTouch(false)
-, m_bIsInit(false)
-, m_bIsSubWindow(false)
-, m_window(NULL)
-, m_fScreenScaleFactor(1.0f)
+    : m_bCaptured(false)
+    , m_fFrameZoomFactor(1.0f)
+    , m_bSupportTouch(false)
+    , m_bIsInit(false)
+    , m_bIsSubWindow(false)
+    , m_window(NULL)
+    , m_fScreenScaleFactor(1.0f)
 {
     m_pTouch = new CCTouch;
     m_pSet = new CCSet;
@@ -143,19 +143,18 @@ CCEGLView::~CCEGLView()
 
 bool CCEGLView::initGL()
 {
-
     // check OpenGL version at first
     const GLubyte* glVersion = glGetString(GL_VERSION);
-    CCLOG("OpenGL version = %s", glVersion);
+    CCLog("OpenGL version = %s", glVersion);
 
     if ( atof((const char*)glVersion) < 1.5 )
     {
         char strComplain[256] = {0};
         sprintf(strComplain,
-		"OpenGL 1.5 or higher is required (your version is %s). Please upgrade the driver of your video card.",
-		glVersion);
-		CCMessageBox(strComplain, "OpenGL version too old");
-		return false;
+        "OpenGL 1.5 or higher is required (your version is %s). Please upgrade the driver of your video card.",
+        glVersion);
+        CCMessageBox(strComplain, "OpenGL version too old");
+        return false;
     }
 
     GLenum GlewInitResult = glewInit();
@@ -387,6 +386,18 @@ void CCEGLView::mouseRelease(QMouseEvent *event)
         (float)(event->y()) / m_fScreenScaleFactor);
     m_pDelegate->touchesEnded(m_pSet, NULL);
     m_pSet->removeObject(m_pTouch);
+}
+
+QGLWidget *CCEGLView::getGLWidget()
+{
+    return m_window;
+}
+
+void CCEGLView::setAnimationInterval(float interval)
+{
+    if (m_window) {
+        m_window->setAnimationInterval(interval);
+    }
 }
 
 NS_CC_END

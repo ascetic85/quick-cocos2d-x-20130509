@@ -1,8 +1,8 @@
 #ifndef  _APP_DELEGATE_H_
 #define  _APP_DELEGATE_H_
 
-#include "cocos2d.h"
 #include "CCApplication.h"
+#include "mainwindow.h"
 
 /**
 @brief    The cocos2d Application.
@@ -33,6 +33,8 @@ public:
     @param  the pointer of the application
     */
     virtual void applicationWillEnterForeground();
+private:
+    MainWindow m_mainWindow;
 };
 
 #endif // _APP_DELEGATE_H_

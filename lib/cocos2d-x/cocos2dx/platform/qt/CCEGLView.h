@@ -26,6 +26,7 @@ THE SOFTWARE.
 #define __CC_EGLVIEW_WIN32_H__
 
 #include <QMouseEvent>
+#include <QWidget>
 
 #include "CCStdC.h"
 #include "platform/CCCommon.h"
@@ -58,7 +59,8 @@ public:
     void mouseMove(QMouseEvent *event);
     void mousePress(QMouseEvent *event);
     void mouseRelease(QMouseEvent *event);
-
+    QGLWidget * getGLWidget();
+    void setAnimationInterval(float interval);
 private:
     virtual bool Create();
     bool initGL();

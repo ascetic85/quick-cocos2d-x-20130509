@@ -8,10 +8,9 @@ GLWidget::GLWidget(int width, int height, CCDirector* director, QWidget *parent)
     , mousePressFunc(NULL)
     , mouseReleaseFunc(NULL)
     , m_director(director)
+    , m_timer(NULL)
 {
-    QTimer *timer = new QTimer(this);
-    connect(timer, SIGNAL(timeout()), this, SLOT(update()));
-    timer->start(1000 / 60);
+    setAnimationInterval(1.0f / 60.0f);
 
     resize(width, height);
 }
@@ -60,8 +59,18 @@ void GLWidget::update()
 //    glewInit();
     makeCurrent();
 
+    paintOverlayGL();
     if (m_director)
         m_director->mainLoop();
 
     doneCurrent();
+}
+
+void GLWidget::setAnimationInterval(float interval)
+{
+    if (!m_timer) {
+        m_timer = new QTimer(this);
+        connect(m_timer, SIGNAL(timeout()), this, SLOT(update()));
+    }
+    m_timer->start(1000 * interval);
 }

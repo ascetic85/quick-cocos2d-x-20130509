@@ -4,8 +4,10 @@
 #include "CCDirector.h"
 #include "CCCommon.h"
 #undef CursorShape
+#include "CCGL.h"
 #include <QtOpenGL/QGLWidget>
 
+class QTimer;
 USING_NS_CC;
 
 class CC_DLL GLWidget : public QGLWidget
@@ -22,6 +24,7 @@ public:
     void setMousePressFunc(PTRFUN func);
     void setMouseReleaseFunc(PTRFUN func);
 
+    void setAnimationInterval(float interval);
 protected:
     virtual void mouseMoveEvent(QMouseEvent *event);
     virtual void mousePressEvent(QMouseEvent *event);
@@ -36,6 +39,7 @@ private:
     PTRFUN mouseReleaseFunc;
 
     CCDirector* m_director;
+    QTimer *m_timer;
 };
 
 #endif // _GL_WIDGET_H_

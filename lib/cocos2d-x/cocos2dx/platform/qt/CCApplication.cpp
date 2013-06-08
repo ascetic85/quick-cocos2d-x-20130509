@@ -41,7 +41,7 @@ int CCApplication::run()
 
 void CCApplication::setAnimationInterval(double interval)
 {
-    // TODO:
+    CCEGLView::sharedOpenGLView()->setAnimationInterval(interval);
 }
 
 //////////////////////////////////////////////////////////////////////////

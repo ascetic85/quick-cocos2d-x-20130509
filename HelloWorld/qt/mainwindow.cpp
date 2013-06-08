@@ -5,9 +5,10 @@
 // Qt
 #include <QHBoxLayout>
 #include <QDebug>
-// Qt
-#include "qt/CCEGLView_qt.h"
-#include "qt/CCGLWidget.h"
+#include <QTimer>
+#include <QGLWidget>
+#include <QLabel>
+#include <QVBoxLayout>
 #include "AppDelegate.h"
 
 
@@ -17,8 +18,11 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
     m_appDelegate(NULL)
+  , m_glWidget(NULL)
 {
     ui->setupUi(this);
+
+    QTimer::singleShot(3*1000, this, SLOT(inter()));
 }
 
 MainWindow::~MainWindow()
@@ -37,12 +41,28 @@ void MainWindow::setCocosAppDelegate(AppDelegate *appDelegate)
     m_appDelegate = appDelegate;
 }
 
+void MainWindow::setGLView(QGLWidget *glWidget)
+{
+    m_glWidget = glWidget;
+}
+
 void MainWindow::on_actionIPhone_3G_3Gs_320x480_triggered()
 {
-    m_appDelegate->restart();
 }
 
 void MainWindow::on_actionIPhone_4_640x960_triggered()
 {
-    m_appDelegate->restart();
+}
+
+void MainWindow::inter()
+{
+    if (m_glWidget) {
+        QWidget *w = new QWidget(this);
+        QLabel *label = new QLabel("XO", w);
+        QVBoxLayout *layout = new QVBoxLayout(w);
+        layout->addWidget(label);
+        layout->addWidget(m_glWidget);
+
+        setCentralWidget(w);
+    }
 }

@@ -2,6 +2,11 @@
 #include "HelloWorldScene.h"
 #include "CCEGLView.h"
 
+// Qt
+#include <QLabel>
+#include <QHBoxLayout>
+#include <QGLWidget>
+
 USING_NS_CC;
 
 AppDelegate::AppDelegate(int argc, char *argv[])
@@ -16,9 +21,9 @@ AppDelegate::~AppDelegate()
 bool AppDelegate::applicationDidFinishLaunching() {
     // initialize director
     CCDirector* pDirector = CCDirector::sharedDirector();
-    CCEGLView* pEGLView = CCEGLView::sharedOpenGLView();
+    cocos2d::CCEGLView* eglView = cocos2d::CCEGLView::sharedOpenGLView();
 
-    pDirector->setOpenGLView(pEGLView);
+    pDirector->setOpenGLView(eglView);
 
     // turn on display FPS
     pDirector->setDisplayStats(true);
@@ -31,6 +36,11 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
     // run
     pDirector->runWithScene(pScene);
+
+    m_mainWindow.setCocosAppDelegate(this);
+    m_mainWindow.setGLView(eglView->getGLWidget());
+    m_mainWindow.show();
+    eglView->getGLWidget()->raise();
 
     return true;
 }

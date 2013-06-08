@@ -1,4 +1,4 @@
-QT       += core gui
+QT       += core gui opengl
 
 TARGET = HelloWorld
 TEMPLATE = app
@@ -34,9 +34,15 @@ INCLUDEPATH += ../../lib/cocos2d-x/cocos2dx/platform \
 
 HEADERS += \
     ../Classes/HelloWorldScene.h \
-    ../Classes/AppDelegate.h
+    ../Classes/AppDelegate.h \
+    mainwindow.h \
+    mainwindow.h
 SOURCES += \
     ../Classes/HelloWorldScene.cpp \
     ../Classes/AppDelegate.cpp \
-    main.cpp
+    main.cpp \
+    mainwindow.cpp
+
+FORMS += \
+    mainwindow.ui
 
