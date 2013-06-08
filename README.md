@@ -1,3 +1,4 @@
+quick-cocos2d-x + Qt
 
 ## CHINESE => [README_CN.md](https://github.com/dualface/quick-cocos2d-x/blob/master/README_CN.md)
 
