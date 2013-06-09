@@ -51,7 +51,7 @@ static bool glew_dynamic_binding()
 		if (strstr(gl_extensions, "ARB_framebuffer_object"))
 		{
 			CCLog("OpenGL: ARB_framebuffer_object is supported\n");
-#ifdef Q_OS_WIN
+#ifdef Q_OS_WIN_1
 			glIsRenderbuffer = (PFNGLISRENDERBUFFERPROC) wglGetProcAddress("glIsRenderbuffer");
 			glBindRenderbuffer = (PFNGLBINDRENDERBUFFERPROC) wglGetProcAddress("glBindRenderbuffer");
 			glDeleteRenderbuffers = (PFNGLDELETERENDERBUFFERSPROC) wglGetProcAddress("glDeleteRenderbuffers");
@@ -76,7 +76,7 @@ static bool glew_dynamic_binding()
 		if (strstr(gl_extensions, "EXT_framebuffer_object"))
 		{
 			CCLog("OpenGL: EXT_framebuffer_object is supported\n");
-#ifdef Q_OS_WIN
+#ifdef Q_OS_WIN_1
 			glIsRenderbuffer = (PFNGLISRENDERBUFFERPROC) wglGetProcAddress("glIsRenderbufferEXT");
 			glBindRenderbuffer = (PFNGLBINDRENDERBUFFERPROC) wglGetProcAddress("glBindRenderbufferEXT");
 			glDeleteRenderbuffers = (PFNGLDELETERENDERBUFFERSPROC) wglGetProcAddress("glDeleteRenderbuffersEXT");
@@ -226,7 +226,6 @@ bool CCEGLView::Create()
         m_window->setFixedSize(iWidth, iHeight);
         m_window->show();
 
-        m_window->setWindowTitle(getViewName());
 
         bRet = initGL();
         if(!bRet) destroyGL();
@@ -397,13 +396,6 @@ void CCEGLView::mouseRelease(QMouseEvent *event)
 QGLWidget *CCEGLView::getGLWidget()
 {
     return m_window;
-}
-
-void CCEGLView::setAnimationInterval(float interval)
-{
-    if (m_window) {
-        m_window->setAnimationInterval(interval);
-    }
 }
 
 NS_CC_END

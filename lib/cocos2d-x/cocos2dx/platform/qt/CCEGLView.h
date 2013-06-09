@@ -61,7 +61,7 @@ public:
     void mousePress(QMouseEvent *event);
     void mouseRelease(QMouseEvent *event);
     QGLWidget * getGLWidget();
-    void setAnimationInterval(float interval);
+
 private:
     virtual bool Create();
     bool initGL();
