@@ -7,7 +7,8 @@
 #include <string>
 
 #undef CursorShape
-#include <QtGui/QApplication>
+//#include <QtGui/QApplication>
+#include <QApplication>
 
 NS_CC_BEGIN
 

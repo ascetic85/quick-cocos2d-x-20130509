@@ -19,6 +19,7 @@ class CC_DLL GLWidget : public QGLWidget
 public:
     GLWidget(){}
     GLWidget(int width, int height, CCDirector* director = NULL, QWidget *parent = 0);
+    ~GLWidget();
 
     void setMouseMoveFunc(PTRFUN func);
     void setMousePressFunc(PTRFUN func);

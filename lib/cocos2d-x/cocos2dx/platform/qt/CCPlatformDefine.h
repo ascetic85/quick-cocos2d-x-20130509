@@ -5,11 +5,11 @@
     #include <QtCore/qglobal.h>
     #undef CC_DLL
     #if defined(_USRDLL)
-        #define CC_DLL     __declspec(dllexport)
-//        #define CC_DLL     Q_DECL_EXPORT
+//        #define CC_DLL     __declspec(dllexport)
+        #define CC_DLL     Q_DECL_EXPORT
     #else 		/* use a DLL library */
-        #define CC_DLL     __declspec(dllimport)
-//        #define CC_DLL     Q_DECL_IMPORT
+//        #define CC_DLL     __declspec(dllimport)
+        #define CC_DLL     Q_DECL_IMPORT
     #endif
 #else
     #if defined(_USRDLL)

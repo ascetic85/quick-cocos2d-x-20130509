@@ -13,7 +13,6 @@ include(base_nodes.pri)
 include(cocoa.pri)
 include(draw_nodes.pri)
 include(effects.pri)
-include(extensions.pri)
 include(kazmath.pri)
 include(keypad_dispatcher.pri)
 include(label_nodes.pri)
@@ -82,6 +81,13 @@ unix {
     LIBS += -L/usr/local/lib/ -lcurl
 }
 
+unix:macx {
+    INCLUDEPATH += \
+            ../cocos2d-x/cocos2dx/platform/third_party/mac/webp
+    LIBS += -L../cocos2d-x/cocos2dx/platform/third_party/mac/libraries -lwebp
+    LIBS += -L/usr/local/lib/ -ltiff
+}
+
 DEFINES += _USRDLL
 DEFINES += __QT__
 DEFINES += CC_UNDER_QT
@@ -92,6 +98,7 @@ INCLUDEPATH += ../cocos2d-x/cocos2dx/platform \
         ../cocos2d-x/cocos2dx
 
 CONFIG(debug, debug|release) {
+    DEFINES += COCOS2D_DEBUG=1
     OBJECTS_DIR = debug/
     DESTDIR = ../../Debug.qt
 }

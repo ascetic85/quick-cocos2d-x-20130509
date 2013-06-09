@@ -5,6 +5,7 @@ TEMPLATE = app
 
 CONFIG(debug, debug|release) {
     DESTDIR = ../../Debug.qt
+    DEFINES += COCOS2D_DEBUG=1
 }
 
 CONFIG(release, debug|release) {
@@ -12,12 +13,15 @@ CONFIG(release, debug|release) {
 }
 
 win32 {
-
     LIBS += -L$(DESTDIR) -llibcocos2d
 }
 
 unix {
     LIBS += -L$(DESTDIR) -lcocos2d
+}
+
+unix:macx {
+    CONFIG -= app_bundle
 }
 
 #DEFINES += WIN32 _WINDOWS

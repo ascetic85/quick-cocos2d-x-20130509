@@ -23,6 +23,7 @@ THE SOFTWARE.
 ****************************************************************************/
 #define __CC_PLATFORM_IMAGE_CPP__
 #include "platform/CCImageCommon_cpp.h"
+#include <QImage>
 
 NS_CC_BEGIN
 
@@ -171,7 +172,9 @@ bool CCImage::initWithString(
         bRet = dc.drawText(pText, size, eAlignMask, pFontName, nSize);
         CC_BREAK_IF(!bRet);
 
-        nLen = dc.m_pImage->numBytes();
+        // Qt 5.0
+//        nLen = dc.m_pImage->numBytes();
+        nLen = dc.m_pImage->byteCount();
         CC_SAFE_DELETE(m_pData);
         m_pData = new uchar [nLen];
         memset(m_pData, 0, nLen);

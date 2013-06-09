@@ -15,6 +15,15 @@ GLWidget::GLWidget(int width, int height, CCDirector* director, QWidget *parent)
     resize(width, height);
 }
 
+GLWidget::~GLWidget()
+{
+    if (m_timer)
+    {
+        m_timer->stop();
+        delete m_timer;
+    }
+}
+
 void GLWidget::setMouseMoveFunc(PTRFUN func)
 {
     mouseMoveFunc = func;

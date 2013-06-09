@@ -23,7 +23,6 @@ THE SOFTWARE.
 ****************************************************************************/
 #include "CCFileUtilsWin32.h"
 #include "platform/CCCommon.h"
-#include <Shlobj.h>
 
 // Qt
 #include <QApplication>

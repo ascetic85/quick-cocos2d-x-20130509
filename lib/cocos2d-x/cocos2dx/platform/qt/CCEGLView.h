@@ -35,6 +35,7 @@ THE SOFTWARE.
 
 
 class GLWidget;
+class QGLWidget;
 
 NS_CC_BEGIN
 

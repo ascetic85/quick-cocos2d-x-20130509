@@ -24,6 +24,7 @@ THE SOFTWARE.
 #include "platform/CCCommon.h"
 #include "CCStdC.h"
 
+#include <QMessageBox>
 #include <QDebug>
 
 NS_CC_BEGIN
@@ -37,7 +38,7 @@ void CCLog(const char * pszFormat, ...)
 
     va_list ap;
     va_start(ap, pszFormat);
-    vsnprintf_s(szBuf, MAX_LEN, MAX_LEN, pszFormat, ap);
+    ::vsnprintf(szBuf, MAX_LEN, pszFormat, ap);
     va_end(ap);
     qDebug(szBuf);
 }
@@ -45,6 +46,7 @@ void CCLog(const char * pszFormat, ...)
 void CCMessageBox(const char * pszMsg, const char * pszTitle)
 {
     CCLog("%s: %s", pszMsg, pszTitle);
+    QMessageBox::warning(0, pszTitle, pszMsg);
 }
 
 void CCLuaLog(const char *pszMsg)

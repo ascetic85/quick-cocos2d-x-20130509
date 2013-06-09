@@ -32,9 +32,9 @@ THE SOFTWARE.
     #define _USE_MATH_DEFINES       // make M_PI can be use
 #endif
 
-#ifndef snprintf
-#define snprintf _snprintf
-#endif
+//#ifndef snprintf
+//#define snprintf _snprintf
+//#endif
 
 #include <math.h>
 #include <string.h>

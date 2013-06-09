@@ -143,7 +143,7 @@ bool CCGLProgram::compileShader(GLuint * shader, GLenum type, const GLchar* sour
     }
     
     const GLchar *sources[] = {
-#if (CC_TARGET_PLATFORM != CC_PLATFORM_WIN32 && CC_TARGET_PLATFORM != CC_PLATFORM_LINUX && CC_TARGET_PLATFORM != CC_PLATFORM_MAC)
+    #if (CC_TARGET_PLATFORM != CC_PLATFORM_WIN32 && CC_TARGET_PLATFORM != CC_PLATFORM_LINUX && CC_TARGET_PLATFORM != CC_PLATFORM_MAC) && (CC_TARGET_PLATFORM != CC_PLATFORM_QT)
         (type == GL_VERTEX_SHADER ? "precision highp float;\n" : "precision mediump float;\n"),
 #endif
         "uniform mat4 CC_PMatrix;\n"
@@ -171,7 +171,6 @@ bool CCGLProgram::compileShader(GLuint * shader, GLenum type, const GLchar* sour
 		
 		glGetShaderSource(*shader, length, NULL, src);
 		CCLOG("cocos2d: ERROR: Failed to compile shader:\n%s", src);
-        
         if (type == GL_VERTEX_SHADER)
         {
             CCLOG("cocos2d: %s", vertexShaderLog());
@@ -181,7 +180,6 @@ bool CCGLProgram::compileShader(GLuint * shader, GLenum type, const GLchar* sour
             CCLOG("cocos2d: %s", fragmentShaderLog());
         }
         free(src);
-
         abort();
     }
     return (status == GL_TRUE);
@@ -264,12 +262,10 @@ const char* CCGLProgram::logForOpenGLObject(GLuint object, GLInfoFunction infoFu
     infoFunc(object, GL_INFO_LOG_LENGTH, &logLength);
     if (logLength < 1)
         return 0;
-
     char *logBytes = (char*)malloc(logLength);
     logFunc(object, logLength, &charsWritten, logBytes);
 
     CCString* log = CCString::create(logBytes);
-
     free(logBytes);
     return log->getCString();
 }
