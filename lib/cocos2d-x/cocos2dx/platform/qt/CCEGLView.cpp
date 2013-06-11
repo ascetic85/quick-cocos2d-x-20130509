@@ -133,9 +133,9 @@ CCEGLView::CCEGLView()
     , m_fFrameZoomFactor(1.0f)
     , m_bSupportTouch(false)
     , m_bIsInit(false)
-    , m_bIsSubWindow(false)
     , m_window(NULL)
     , m_fScreenScaleFactor(1.0f)
+    , m_glParentWidget(NULL)
 {
     m_pTouch = new CCTouch;
     m_pSet = new CCSet;
@@ -211,12 +211,12 @@ bool CCEGLView::Create()
     {
         CC_BREAK_IF(m_window);
 
-        s_pMainWindow = this;
+        m_glParentWidget = new QWidget();
 
         // Qt Window
         float iWidth = 320;
         float iHeight = 480;
-        m_window = new GLWidget(iWidth, iHeight, CCDirector::sharedDirector());
+        m_window = new GLWidget(iWidth, iHeight, CCDirector::sharedDirector(), m_glParentWidget);
 
         m_window->setMouseMoveFunc(&cocos2d::mouseMove);
         m_window->setMousePressFunc(&cocos2d::mousePress);
@@ -224,7 +224,7 @@ bool CCEGLView::Create()
 
         m_window->setWindowFlags(m_window->windowFlags()& ~Qt::WindowMaximizeButtonHint);
         m_window->setFixedSize(iWidth, iHeight);
-        m_window->show();
+        m_glParentWidget->show();
 
 
         bRet = initGL();
@@ -232,6 +232,7 @@ bool CCEGLView::Create()
         CC_BREAK_IF(!bRet);
 
         m_bIsInit = true;
+        s_pMainWindow = this;
         bRet = true;
     } while (0);
 
@@ -247,9 +248,7 @@ void CCEGLView::end()
 {
     CC_SAFE_DELETE(m_pSet);
     CC_SAFE_DELETE(m_pTouch);
-
-    if (! m_bIsSubWindow)
-        CC_SAFE_DELETE(m_window);
+    CC_SAFE_DELETE(m_window);
 
     s_pMainWindow = NULL;
     delete this;
@@ -273,8 +272,8 @@ void CCEGLView::setIMEKeyboardState(bool /*bOpen*/)
 void CCEGLView::setViewName(const char* pszViewName)
 {
     CCEGLViewProtocol::setViewName(pszViewName);
-    if (m_window) {
-        m_window->setWindowTitle(getViewName());
+    if (m_glParentWidget) {
+        m_glParentWidget->setWindowTitle(getViewName());
     }
 }
 
@@ -284,6 +283,7 @@ void CCEGLView::resize(int width, int height)
     {
         CC_BREAK_IF(!m_window);
         m_window->setFixedSize(width, height);
+        m_glParentWidget->setFixedSize(width, height);
     } while(0);
 }
 
@@ -393,9 +393,9 @@ void CCEGLView::mouseRelease(QMouseEvent *event)
     m_pSet->removeObject(m_pTouch);
 }
 
-QGLWidget *CCEGLView::getGLWidget()
+QWidget *CCEGLView::getGLWidget()
 {
-    return m_window;
+    return m_glParentWidget;
 }
 
 NS_CC_END

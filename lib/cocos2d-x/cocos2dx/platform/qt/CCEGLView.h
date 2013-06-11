@@ -60,7 +60,7 @@ public:
     void mouseMove(QMouseEvent *event);
     void mousePress(QMouseEvent *event);
     void mouseRelease(QMouseEvent *event);
-    QGLWidget * getGLWidget();
+    QWidget * getGLWidget();
 
 private:
     virtual bool Create();
@@ -99,7 +99,7 @@ private:
     CCSet * m_pSet;
     CCTouch * m_pTouch;
     GLWidget* m_window;
-    bool m_bIsSubWindow;
+    QWidget * m_glParentWidget;
 };
 
 NS_CC_END

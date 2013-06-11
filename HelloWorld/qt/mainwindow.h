@@ -18,7 +18,7 @@ public:
     ~MainWindow();
     
     void setCocosAppDelegate(AppDelegate *appDelegate);
-    void setGLView(QGLWidget *glWidget);
+    void setGLView(QWidget *glWidget);
 protected:
     void closeEvent(QCloseEvent *);
 
@@ -31,7 +31,7 @@ private slots:
 private:
     Ui::MainWindow *ui;
     AppDelegate *m_appDelegate;
-    QGLWidget *m_glWidget;
+    QWidget *m_glWidget;
 };
 
 #endif // MAINWINDOW_H

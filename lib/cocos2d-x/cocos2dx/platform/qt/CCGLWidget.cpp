@@ -3,7 +3,7 @@
 
 
 GLWidget::GLWidget(int width, int height, CCDirector* director, QWidget *parent)
-    : QGLWidget(QGLFormat(QGL::SampleBuffers), parent)
+    : QGLWidget(QGLFormat(QGL::DoubleBuffer), parent)
     , mouseMoveFunc(NULL)
     , mousePressFunc(NULL)
     , mouseReleaseFunc(NULL)
@@ -68,7 +68,6 @@ void GLWidget::update()
 //    glewInit();
     makeCurrent();
 
-    paintOverlayGL();
     if (m_director)
         m_director->mainLoop();
 
@@ -83,3 +82,4 @@ void GLWidget::setAnimationInterval(float interval)
     }
     m_timer->start(1000 * interval);
 }
+

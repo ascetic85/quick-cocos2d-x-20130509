@@ -41,7 +41,7 @@ void MainWindow::setCocosAppDelegate(AppDelegate *appDelegate)
     m_appDelegate = appDelegate;
 }
 
-void MainWindow::setGLView(QGLWidget *glWidget)
+void MainWindow::setGLView(QWidget *glWidget)
 {
     m_glWidget = glWidget;
 }
