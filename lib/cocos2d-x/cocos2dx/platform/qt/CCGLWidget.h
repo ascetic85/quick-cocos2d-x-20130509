@@ -25,7 +25,7 @@ public:
     void setMousePressFunc(PTRFUN func);
     void setMouseReleaseFunc(PTRFUN func);
 
-    void setAnimationInterval(float interval);
+    void setAnimationInterval(double interval);
 protected:
     virtual void mouseMoveEvent(QMouseEvent *event);
     virtual void mousePressEvent(QMouseEvent *event);

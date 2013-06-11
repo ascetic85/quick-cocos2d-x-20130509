@@ -21,8 +21,6 @@ MainWindow::MainWindow(QWidget *parent) :
   , m_glWidget(NULL)
 {
     ui->setupUi(this);
-
-    QTimer::singleShot(3*1000, this, SLOT(inter()));
 }
 
 MainWindow::~MainWindow()
@@ -44,6 +42,7 @@ void MainWindow::setCocosAppDelegate(AppDelegate *appDelegate)
 void MainWindow::setGLView(QWidget *glWidget)
 {
     m_glWidget = glWidget;
+    QTimer::singleShot(0*1000, this, SLOT(inter()));
 }
 
 void MainWindow::on_actionIPhone_3G_3Gs_320x480_triggered()

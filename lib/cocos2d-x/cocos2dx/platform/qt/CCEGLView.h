@@ -60,6 +60,7 @@ public:
     void mouseMove(QMouseEvent *event);
     void mousePress(QMouseEvent *event);
     void mouseRelease(QMouseEvent *event);
+    void setAnimationInterval(double interval);
     QWidget * getGLWidget();
 
 private:

@@ -74,7 +74,7 @@ void GLWidget::update()
     doneCurrent();
 }
 
-void GLWidget::setAnimationInterval(float interval)
+void GLWidget::setAnimationInterval(double interval)
 {
     if (!m_timer) {
         m_timer = new QTimer(this);

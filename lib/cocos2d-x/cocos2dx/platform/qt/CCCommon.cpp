@@ -38,7 +38,7 @@ void CCLog(const char * pszFormat, ...)
 
     va_list ap;
     va_start(ap, pszFormat);
-    ::vsnprintf(szBuf, MAX_LEN, pszFormat, ap);
+    qvsnprintf(szBuf, MAX_LEN, pszFormat, ap);
     va_end(ap);
     qDebug(szBuf);
 }

@@ -393,6 +393,12 @@ void CCEGLView::mouseRelease(QMouseEvent *event)
     m_pSet->removeObject(m_pTouch);
 }
 
+void CCEGLView::setAnimationInterval(double interval)
+{
+    if (m_window)
+        m_window->setAnimationInterval(interval);
+}
+
 QWidget *CCEGLView::getGLWidget()
 {
     return m_glParentWidget;
