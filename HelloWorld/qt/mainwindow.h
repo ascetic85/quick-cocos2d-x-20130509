@@ -28,6 +28,8 @@ private slots:
     void on_actionIPhone_4_640x960_triggered();
 
     void inter();
+    void on_actionXo_triggered();
+
 private:
     Ui::MainWindow *ui;
     AppDelegate *m_appDelegate;

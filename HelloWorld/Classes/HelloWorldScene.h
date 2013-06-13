@@ -11,6 +11,7 @@ public:
 
 	// there's no 'id' in cpp, so we recommand to return the exactly class pointer
 	static cocos2d::CCScene* scene();
+    static HelloWorld* curHelloWorld();
 	
 	// a selector callback
 	virtual void menuCloseCallback(CCObject* pSender);
@@ -19,6 +20,7 @@ public:
     CREATE_FUNC(HelloWorld);
 
     void addSpriteRamdon(float dt);
+    void addSpriteRamdon2(float dt);
 };
 
 #endif // __HELLOWORLD_SCENE_H__

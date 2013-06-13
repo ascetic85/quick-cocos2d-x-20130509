@@ -3,7 +3,7 @@
 #include <QDebug>
 
 USING_NS_CC;
-
+static HelloWorld *g_pHelloWorld = NULL;
 CCScene* HelloWorld::scene()
 {
 	// 'scene' is an autorelease object
@@ -11,12 +11,18 @@ CCScene* HelloWorld::scene()
 	
 	// 'layer' is an autorelease object
     HelloWorld *layer = HelloWorld::create();
+    g_pHelloWorld = layer;
 
 	// add layer as a child to scene
 	scene->addChild(layer);
 
 	// return the scene
 	return scene;
+}
+
+HelloWorld * HelloWorld::curHelloWorld()
+{
+    return g_pHelloWorld;
 }
 
 // on "init" you need to initialize your instance
@@ -90,4 +96,18 @@ void HelloWorld::addSpriteRamdon(float /*dt*/)
     CCSprite *pSprite = CCSprite::create("CloseNormal.png");
     pSprite->setPosition(ccp(CCRANDOM_0_1()*size.width, CCRANDOM_0_1()*size.height));
     this->addChild(pSprite);
+}
+
+void HelloWorld::addSpriteRamdon2(float /*dt*/)
+{
+    CCSize size = CCDirector::sharedDirector()->getWinSize();
+    CCSprite *pSprite = CCSprite::create("Pea.png");
+    pSprite->setPosition(ccp(CCRANDOM_0_1()*size.width, CCRANDOM_0_1()*size.height));
+    this->addChild(pSprite);
+
+
+    CCParticleSystemQuad *fire = CCParticleFireworks::create();
+    this->addChild(fire);
+    fire->setPosition(ccp(CCRANDOM_0_1()*size.width, CCRANDOM_0_1()*size.height));
+    fire->setTexture( CCTextureCache::sharedTextureCache()->addImage("Qt.png") );
 }

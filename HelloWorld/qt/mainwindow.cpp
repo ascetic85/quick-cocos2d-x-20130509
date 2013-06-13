@@ -9,7 +9,9 @@
 #include <QGLWidget>
 #include <QLabel>
 #include <QVBoxLayout>
+
 #include "AppDelegate.h"
+#include "HelloWorldScene.h"
 
 
 using namespace cocos2d;
@@ -64,4 +66,9 @@ void MainWindow::inter()
 
         setCentralWidget(w);
     }
+}
+
+void MainWindow::on_actionXo_triggered()
+{
+    HelloWorld::curHelloWorld()->scheduleOnce(schedule_selector(HelloWorld::addSpriteRamdon2), 0);
 }

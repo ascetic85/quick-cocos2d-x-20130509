@@ -36,8 +36,15 @@
     <addaction name="actionIPhone_4_640x960"/>
     <addaction name="actionIPhone_5_640x1136"/>
    </widget>
+   <widget class="QMenu" name="menuTest">
+    <property name="title">
+     <string>Test</string>
+    </property>
+    <addaction name="actionXo"/>
+   </widget>
    <addaction name="menuFile"/>
    <addaction name="menuHxW"/>
+   <addaction name="menuTest"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionIPhone_3G_3Gs_320x480">
@@ -53,6 +60,11 @@
   <action name="actionIPhone_5_640x1136">
    <property name="text">
     <string>iPhone 5 (640x1136)</string>
+   </property>
+  </action>
+  <action name="actionXo">
+   <property name="text">
+    <string>xo</string>
    </property>
   </action>
  </widget>
