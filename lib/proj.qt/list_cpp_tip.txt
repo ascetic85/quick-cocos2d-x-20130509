@@ -1,0 +1,5 @@
+# find ../cocos2d-x/extensions/ -name "*.cpp"
+
+# vim
+# :%s/$/ \\/      
+

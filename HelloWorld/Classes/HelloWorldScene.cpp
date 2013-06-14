@@ -101,7 +101,7 @@ void HelloWorld::addSpriteRamdon(float /*dt*/)
 void HelloWorld::addSpriteRamdon2(float /*dt*/)
 {
     CCSize size = CCDirector::sharedDirector()->getWinSize();
-    CCSprite *pSprite = CCSprite::create("Pea.png");
+    CCSprite *pSprite = CCSprite::create("Qt.png");
     pSprite->setPosition(ccp(CCRANDOM_0_1()*size.width, CCRANDOM_0_1()*size.height));
     this->addChild(pSprite);
 
