@@ -30,6 +30,7 @@ include(textures.pri)
 include(tileMap_parallax_nodes.pri)
 include(touch_dispatcher.pri)
 
+#include(extensions.pri)
 
 win32 {
     TARGET = libcocos2d
@@ -95,7 +96,8 @@ INCLUDEPATH += ../cocos2d-x/cocos2dx/platform \
         ../cocos2d-x/cocos2dx/platform/qt \
         ../cocos2d-x/cocos2dx/cocoa \
         ../cocos2d-x/cocos2dx/include \
-        ../cocos2d-x/cocos2dx
+        ../cocos2d-x/cocos2dx   \
+        ../cocos2d-x/extensions
 
 CONFIG(debug, debug|release) {
     DEFINES += COCOS2D_DEBUG=1
