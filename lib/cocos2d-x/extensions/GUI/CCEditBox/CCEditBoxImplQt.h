@@ -79,12 +79,6 @@ private:
 
     int   m_nMaxLength;
     CCSize m_EditSize;
-
-	/*
-    CCSize     m_tContentSize;
-    HWND       m_pSysEdit;
-    int        m_nMaxTextLength;
-	*/
 };
 
 

@@ -48,6 +48,7 @@ win32 {
             ../cocos2d-x/cocos2dx/platform/third_party/win32/libxml2 \
             ../cocos2d-x/cocos2dx/platform/third_party/win32/libwebp    \
             ../cocos2d-x/cocos2dx/platform/third_party/win32/OGLES    \
+            ../cocos2d-x/cocos2dx/platform/third_party/win32/    \
             ../cocos2d-x/cocos2dx/platform/third_party/win32/OGLES/GL
 
 
@@ -62,6 +63,7 @@ win32 {
     LIBS += -L../cocos2d-x/cocos2dx/platform/third_party/win32/libraries -lpthreadVCE2
     LIBS += -L../cocos2d-x/cocos2dx/platform/third_party/win32/libraries -llibtiff
     LIBS += -L../cocos2d-x/cocos2dx/platform/third_party/win32/libraries -llibwebp
+    LIBS += -L../cocos2d-x/cocos2dx/platform/third_party/win32/libraries -llibcurl_imp
     LIBS += -L../cocos2d-x/cocos2dx/platform/third_party/win32/libraries -lglew32
 
     QMAKE_LFLAGS_DEBUG  = /DEBUG /NODEFAULTLIB:libcmt.lib

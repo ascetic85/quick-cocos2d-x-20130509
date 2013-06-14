@@ -232,7 +232,9 @@ void CCEditBoxImplQt::openKeyboard()
 	std::string text = getText();
 	if (text.length())
 		strncpy(pText, text.c_str(), 100);
-	bool didChange = CWin32InputBox::InputBox("Input", placeHolder.c_str(), pText, 100, false) == IDOK;
+//    bool didChange = CWin32InputBox::InputBox("Input", placeHolder.c_str(), pText, 100, false) == IDOK;
+    // FIXME:
+    bool didChange = false;
 	
 	if (didChange) 	
 		setText(pText);
