@@ -86,7 +86,7 @@ bool HelloWorld::init()
     // test for accelerometer
     m_pBall = NULL;
     {
-        m_pBall = CCSprite::create("Images/ball.png");
+        m_pBall = CCSprite::create("CloseNormal.png");
         m_pBall->setPosition( ccp(size.width/2, size.height/2) );
         addChild(m_pBall);
     }
@@ -126,6 +126,7 @@ void HelloWorld::addSpriteRamdon2(float /*dt*/)
 
 void HelloWorld::addEditBox(float /*dt*/)
 {
+#if 1
     CCSize winSize = CCDirector::sharedDirector()->getWinSize();
     CCSize editBoxSize = CCSizeMake(winSize.width, 60);
     // bottom
@@ -136,6 +137,7 @@ void HelloWorld::addEditBox(float /*dt*/)
     m_pEditEmail->setInputMode(kEditBoxInputModeEmailAddr);
     m_pEditEmail->setDelegate(this);
     addChild(m_pEditEmail);
+#endif
 }
 
 void HelloWorld::editBoxEditingDidBegin(cocos2d::extension::CCEditBox* editBox)

@@ -14,8 +14,8 @@ HEADERS += \
     ../cocos2d-x/cocos2dx/platform/CCThread.h \
     ../cocos2d-x/cocos2dx/platform/CCZipFile.h \
     ../cocos2d-x/cocos2dx/platform/platform.h \
-    ../cocos2d-x/cocos2dx/platform/qt/CCGLWidget.h \
-    ../cocos2d-x/cocos2dx/platform/qt/CCEGLView.h
+    ../cocos2d-x/cocos2dx/platform/qt/CCEGLView.h \
+    ../cocos2d-x/cocos2dx/platform/qt/CCGLWidget.h
 
 SOURCES += \
     ../cocos2d-x/cocos2dx/platform/CCEGLViewProtocol.cpp \

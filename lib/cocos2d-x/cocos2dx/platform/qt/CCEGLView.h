@@ -33,8 +33,9 @@ THE SOFTWARE.
 #include "cocoa/CCGeometry.h"
 #include "platform/CCEGLViewProtocol.h"
 
+typedef void(*ACCEL_PTRFUN)(QKeyEvent *event);
 
-#include "CCGLWidget.h"
+class GLWidget;
 
 NS_CC_BEGIN
 

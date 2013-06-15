@@ -82,7 +82,7 @@ unix {
     LIBS += -L/usr/local/lib/ -lGLEW
     LIBS += -L/usr/local/lib/ -lz
     LIBS += -L/usr/local/lib/ -lcurl
-    LIBS += -L/usr/local/lib/ -lsqlite3
+#    LIBS += -L/usr/local/lib/ -lsqlite3
 }
 
 unix:macx {

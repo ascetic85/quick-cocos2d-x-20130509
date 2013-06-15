@@ -1,6 +1,6 @@
 #if 1
 #include "AppDelegate.h"
-#include "CCEGLView.h"
+#include "cocos2d.h"
 #include <stdio.h>
 
 int main(int argc, char *argv[])

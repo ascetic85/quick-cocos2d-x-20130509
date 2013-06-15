@@ -36,6 +36,7 @@ THE SOFTWARE.
 #include "CCTouch.h"
 #include "CCGLWidget.h"
 
+
 NS_CC_BEGIN
 
 

@@ -1,7 +1,5 @@
 #include "AppDelegate.h"
 #include "HelloWorldScene.h"
-#include "CCEGLView.h"
-
 // Qt
 #include <QLabel>
 #include <QHBoxLayout>

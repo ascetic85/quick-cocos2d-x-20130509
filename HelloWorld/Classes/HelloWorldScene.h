@@ -29,7 +29,7 @@ public:
     virtual void editBoxTextChanged(cocos2d::extension::CCEditBox* editBox, const std::string& text);
     virtual void editBoxReturn(cocos2d::extension::CCEditBox* editBox);
 
-    void didAccelerate(CCAcceleration* pAccelerationValue);
+    void didAccelerate(cocos2d::CCAcceleration* pAccelerationValue);
 private:
     cocos2d::CCLabelTTF *m_label;
     cocos2d::CCSprite *m_pBall;
