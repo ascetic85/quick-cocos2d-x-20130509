@@ -1,3 +1,5 @@
+INCLUDEPATH += ../cocos2d-x/cocos2dx/platform/third_party/common/sqlite
+
 HEADERS += \
     ../cocos2d-x/cocos2dx/platform/CCAccelerometerDelegate.h \
     ../cocos2d-x/cocos2dx/platform/CCApplicationProtocol.h \
@@ -23,6 +25,7 @@ SOURCES += \
     ../cocos2d-x/cocos2dx/platform/platform.cpp \
     ../cocos2d-x/cocos2dx/platform/CCThread.cpp \
     ../cocos2d-x/cocos2dx/platform/CCZipFile.cpp \
+    ../cocos2d-x/cocos2dx/platform/third_party/common/sqlite/sqlite3.c \
     ../cocos2d-x/cocos2dx/platform/qt/CCAccelerometer.cpp \
     ../cocos2d-x/cocos2dx/platform/qt/CCApplication.cpp \
     ../cocos2d-x/cocos2dx/platform/qt/CCCommon.cpp    \

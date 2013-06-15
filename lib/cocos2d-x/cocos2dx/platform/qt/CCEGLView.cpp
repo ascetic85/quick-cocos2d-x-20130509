@@ -248,6 +248,7 @@ void CCEGLView::end()
 {
     CC_SAFE_DELETE(m_pSet);
     CC_SAFE_DELETE(m_pTouch);
+    CC_SAFE_DELETE(m_glParentWidget);
     CC_SAFE_DELETE(m_window);
 
     s_pMainWindow = NULL;
