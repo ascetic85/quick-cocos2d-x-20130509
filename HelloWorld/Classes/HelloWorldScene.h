@@ -2,8 +2,9 @@
 #define __HELLOWORLD_SCENE_H__
 
 #include "cocos2d.h"
+#include "cocos-ext.h"
 
-class HelloWorld : public cocos2d::CCLayer
+class HelloWorld : public cocos2d::CCLayer, public cocos2d::extension::CCEditBoxDelegate
 {
 public:
 	// Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
@@ -21,6 +22,15 @@ public:
 
     void addSpriteRamdon(float dt);
     void addSpriteRamdon2(float dt);
+
+    void addEditBox(float dt);
+    virtual void editBoxEditingDidBegin(cocos2d::extension::CCEditBox* editBox);
+    virtual void editBoxEditingDidEnd(cocos2d::extension::CCEditBox* editBox);
+    virtual void editBoxTextChanged(cocos2d::extension::CCEditBox* editBox, const std::string& text);
+    virtual void editBoxReturn(cocos2d::extension::CCEditBox* editBox);
+
+private:
+    cocos2d::CCLabelTTF *m_label;
 };
 
 #endif // __HELLOWORLD_SCENE_H__

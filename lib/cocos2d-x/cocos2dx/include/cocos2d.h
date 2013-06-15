@@ -193,6 +193,13 @@ THE SOFTWARE.
 	#include "platform/Marmalade/CCStdC.h"
 #endif // CC_TARGET_PLATFORM == CC_PLATFORM_LINUX
 
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_QT)
+    #include "platform/qt/CCAccelerometer.h"
+    #include "platform/qt/CCApplication.h"
+    #include "platform/qt/CCEGLView.h"
+    #include "platform/qt/CCGL.h"
+    #include "platform/qt/CCStdC.h"
+#endif // CC_TARGET_PLATFORM == CC_PLATFORM_QT
 
 // script_support
 #include "script_support/CCScriptSupport.h"

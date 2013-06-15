@@ -1,8 +1,8 @@
 #include "HelloWorldScene.h"
-
-#include <QDebug>
+#include <cocos-ext.h>
 
 USING_NS_CC;
+USING_NS_CC_EXT;
 static HelloWorld *g_pHelloWorld = NULL;
 CCScene* HelloWorld::scene()
 {
@@ -58,6 +58,7 @@ bool HelloWorld::init()
 	// add a label shows "Hello World"
 	// create and initialize a label
     CCLabelTTF* pLabel = CCLabelTTF::create("Hello World By Qt", "Arial", 24);
+    m_label = pLabel;
 	// ask director the window size
 	CCSize size = CCDirector::sharedDirector()->getWinSize();
     CCLog("HelloWorldScene: %lf, %lf", size.width, size.height);
@@ -78,15 +79,16 @@ bool HelloWorld::init()
 	this->addChild(pSprite, 0);
 
     this->schedule(schedule_selector(HelloWorld::addSpriteRamdon), 2.0f);
+    this->addEditBox(0);
 	return true;
 }
 
-void HelloWorld::menuCloseCallback(CCObject* pSender)
+void HelloWorld::menuCloseCallback(CCObject* /*pSender*/)
 {
-	CCDirector::sharedDirector()->end();
+    CCDirector::sharedDirector()->end();
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_QT)
-	exit(0);
+    exit(0);
 #endif
 }
 
@@ -110,4 +112,38 @@ void HelloWorld::addSpriteRamdon2(float /*dt*/)
     this->addChild(fire);
     fire->setPosition(ccp(CCRANDOM_0_1()*size.width, CCRANDOM_0_1()*size.height));
     fire->setTexture( CCTextureCache::sharedTextureCache()->addImage("Qt.png") );
+}
+
+void HelloWorld::addEditBox(float /*dt*/)
+{
+    CCSize winSize = CCDirector::sharedDirector()->getWinSize();
+    CCSize editBoxSize = CCSizeMake(winSize.width, 60);
+    // bottom
+    CCEditBox *m_pEditEmail = CCEditBox::create(CCSizeMake(editBoxSize.width, editBoxSize.height), CCScale9Sprite::create("extensions/yellow_edit.png"));
+    m_pEditEmail->setPosition(ccp(winSize.width/2, 100));
+    m_pEditEmail->setAnchorPoint(ccp(0.5, 1.0f));
+    m_pEditEmail->setPlaceHolder("Email:");
+    m_pEditEmail->setInputMode(kEditBoxInputModeEmailAddr);
+    m_pEditEmail->setDelegate(this);
+    addChild(m_pEditEmail);
+}
+
+void HelloWorld::editBoxEditingDidBegin(cocos2d::extension::CCEditBox* editBox)
+{
+    CCLog("editBox %p DidBegin !", editBox);
+}
+
+void HelloWorld::editBoxEditingDidEnd(cocos2d::extension::CCEditBox* editBox)
+{
+    CCLog("editBox %p DidEnd !", editBox);
+}
+
+void HelloWorld::editBoxTextChanged(cocos2d::extension::CCEditBox* editBox, const std::string& text)
+{
+    CCLog("editBox %p TextChanged, text: %s ", editBox, text.c_str());
+}
+
+void HelloWorld::editBoxReturn(CCEditBox* editBox)
+{
+    CCLog("editBox %p was returned !", editBox);
 }

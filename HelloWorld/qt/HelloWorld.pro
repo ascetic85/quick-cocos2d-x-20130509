@@ -34,7 +34,8 @@ INCLUDEPATH += ../../lib/cocos2d-x/cocos2dx/platform \
         ../../lib/cocos2d-x/cocos2dx \
         ../../lib/cocos2d-x/cocos2dx/platform/qt \
         ../../lib/cocos2d-x/cocos2dx/kazmath/include \
-        ../Classes
+        ../Classes \
+        ../../lib/cocos2d-x/extensions/ \
 
 HEADERS += \
     ../Classes/HelloWorldScene.h \

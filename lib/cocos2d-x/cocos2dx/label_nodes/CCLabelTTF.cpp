@@ -259,31 +259,65 @@ void CCLabelTTF::setFontName(const char *fontName)
 // Helper
 bool CCLabelTTF::updateTexture()
 {
+#if CC_TARGET_PLATFORM == CC_PLATFORM_QT
+    scheduleOnce(schedule_selector(CCLabelTTF::_qtUpdateTexture), 0);
+
+#else
     CCTexture2D *tex;
-    
+
     // let system compute label's width or height when its value is 0
     // refer to cocos2d-x issue #1430
     tex = new CCTexture2D();
     if (!tex)
     {
-		return false;
+        return false;
     }
-    
+
     tex->initWithString( m_string.c_str(),
                         m_pFontName->c_str(),
                         m_fFontSize * CC_CONTENT_SCALE_FACTOR(),
-                        CC_SIZE_POINTS_TO_PIXELS(m_tDimensions), 
+                        CC_SIZE_POINTS_TO_PIXELS(m_tDimensions),
                         m_hAlignment,
                         m_vAlignment);
-	
+
     this->setTexture(tex);
     tex->release();
-	
-	CCRect rect = CCRectZero;
+
+    CCRect rect = CCRectZero;
     rect.size = m_pobTexture->getContentSize();
     this->setTextureRect(rect);
+#endif
 
     return true;
 }
+
+#if CC_TARGET_PLATFORM == CC_PLATFORM_QT
+void CCLabelTTF::_qtUpdateTexture(float dt)
+{
+    CCTexture2D *tex;
+
+    // let system compute label's width or height when its value is 0
+    // refer to cocos2d-x issue #1430
+    tex = new CCTexture2D();
+    if (!tex)
+    {
+        return ;
+    }
+
+    tex->initWithString( m_string.c_str(),
+                        m_pFontName->c_str(),
+                        m_fFontSize * CC_CONTENT_SCALE_FACTOR(),
+                        CC_SIZE_POINTS_TO_PIXELS(m_tDimensions),
+                        m_hAlignment,
+                        m_vAlignment);
+
+    this->setTexture(tex);
+    tex->release();
+
+    CCRect rect = CCRectZero;
+    rect.size = m_pobTexture->getContentSize();
+    this->setTextureRect(rect);
+}
+#endif
 
 NS_CC_END

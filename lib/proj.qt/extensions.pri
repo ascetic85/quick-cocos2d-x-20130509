@@ -51,3 +51,6 @@ SOURCES += \
 ../cocos2d-x/extensions//physics_nodes/CCPhysicsDebugNode.cpp \
 ../cocos2d-x/extensions//physics_nodes/CCPhysicsSprite.cpp \
 ../cocos2d-x/extensions//proj.qt/QtInputBox.cpp
+
+HEADERS += \
+    ../cocos2d-x/extensions/proj.qt/QtInputBox.h
