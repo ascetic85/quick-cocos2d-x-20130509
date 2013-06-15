@@ -30,7 +30,7 @@ include(textures.pri)
 include(tileMap_parallax_nodes.pri)
 include(touch_dispatcher.pri)
 
-#include(extensions.pri)
+include(extensions.pri)
 
 win32 {
     TARGET = libcocos2d
@@ -82,6 +82,7 @@ unix {
     LIBS += -L/usr/local/lib/ -lGLEW
     LIBS += -L/usr/local/lib/ -lz
     LIBS += -L/usr/local/lib/ -lcurl
+    LIBS += -L/usr/local/lib/ -lsqlite3
 }
 
 unix:macx {

@@ -64,13 +64,14 @@ THE SOFTWARE.
 #ifdef Q_OS_WIN
 #include <WinSock.h>    // for struct timeval
 #include "compat/stdint.h"
-#endif
 
 struct timezone
 {
     int tz_minuteswest;
     int tz_dsttime;
 };
+
+#endif
 
 #ifdef _WIN32
 //struct timeval {
