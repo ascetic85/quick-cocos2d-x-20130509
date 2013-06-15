@@ -26,6 +26,8 @@
 #include "CCDirector.h"
 #include "ccMacros.h"
 
+#include <QKeyEvent>
+
 namespace
 {
 
@@ -36,7 +38,103 @@ namespace
     const double    g_minAcceleration=-1.0f;
     const double    g_maxAcceleration=1.0f;
 
+    template <class T>
+     T CLAMP( const T val,const T minVal,const T maxVal )
+     {
+         CC_ASSERT( minVal<=maxVal );
+         T    result=val;
+         if ( result<minVal )
+             result=minVal;
+         else if ( result>maxVal )
+             result=maxVal;
 
+         CC_ASSERT( minVal<=result && result<=maxVal );
+         return result;
+     }
+
+     bool handleKeyDown( QKeyEvent *wParam )
+     {
+         bool    sendUpdate=false;
+         switch( wParam->key() )
+         {
+         case Qt::Key_Left:
+             sendUpdate=true;
+             g_accelX=CLAMP( g_accelX-g_accelerationStep,g_minAcceleration,g_maxAcceleration );
+             break;
+         case Qt::Key_Right:
+             sendUpdate=true;
+             g_accelX=CLAMP( g_accelX+g_accelerationStep,g_minAcceleration,g_maxAcceleration );
+             break;
+         case Qt::Key_Up:
+             sendUpdate=true;
+             g_accelY=CLAMP( g_accelY+g_accelerationStep,g_minAcceleration,g_maxAcceleration );
+             break;
+         case Qt::Key_Down:
+             sendUpdate=true;
+             g_accelY=CLAMP( g_accelY-g_accelerationStep,g_minAcceleration,g_maxAcceleration );
+             break;
+         case Qt::Key_Comma:
+             sendUpdate=true;
+             g_accelZ=CLAMP( g_accelZ+g_accelerationStep,g_minAcceleration,g_maxAcceleration );
+             break;
+         case Qt::Key_Period:
+             sendUpdate=true;
+             g_accelZ=CLAMP( g_accelZ-g_accelerationStep,g_minAcceleration,g_maxAcceleration );
+             break;
+         }
+         return sendUpdate;
+     }
+
+     bool handleKeyUp( QKeyEvent *wParam )
+     {
+         bool    sendUpdate=false;
+         switch( wParam->key() )
+         {
+         case Qt::Key_Left:
+         case Qt::Key_Right:
+             sendUpdate=true;
+             g_accelX=0.0;
+             break;
+         case Qt::Key_Up:
+         case Qt::Key_Down:
+             sendUpdate=true;
+             g_accelY=0.0;
+             break;
+         case Qt::Key_Comma:
+         case Qt::Key_Period:
+             sendUpdate=true;
+             g_accelZ=0.0;
+             break;
+         }
+         return sendUpdate;
+     }
+
+     void myAccelerometerKeyHook( QKeyEvent *keyEvent )
+     {
+         cocos2d::CCAccelerometer    *pAccelerometer = cocos2d::CCDirector::sharedDirector()->getAccelerometer();
+         bool                        sendUpdate=false;
+         switch( keyEvent->type() )
+         {
+         case QEvent::KeyPress:
+             sendUpdate=handleKeyDown( keyEvent );
+             break;
+         case QEvent::KeyRelease:
+             sendUpdate=handleKeyUp( keyEvent );
+             break;
+
+         default:
+             // Not expected to get here!!
+             CC_ASSERT( false );
+             break;
+         }
+
+         if ( sendUpdate )
+         {
+             const time_t    theTime=time(NULL);
+             const double    timestamp=(double)theTime / 100.0;
+             pAccelerometer->update( g_accelX,g_accelY,g_accelZ,timestamp );
+         }
+     }
     void resetAccelerometer()
     {
         g_accelX=0.0;
@@ -62,6 +160,21 @@ CCAccelerometer::~CCAccelerometer()
 void CCAccelerometer::setDelegate(CCAccelerometerDelegate* pDelegate) 
 {
     m_pAccelDelegate = pDelegate;
+
+    // Enable/disable the accelerometer.
+    // Well, there isn't one on Win32 so we don't do anything other than register
+    // and deregister ourselves from the Windows Key handler.
+    if (pDelegate)
+    {
+        // Register our handler
+        CCEGLView::sharedOpenGLView()->setAccelerometerKeyHook( &myAccelerometerKeyHook );
+    }
+    else
+    {
+        // De-register our handler
+        CCEGLView::sharedOpenGLView()->setAccelerometerKeyHook( NULL );
+        resetAccelerometer();
+    }
 }
 
 void CCAccelerometer::setAccelerometerInterval(float interval)

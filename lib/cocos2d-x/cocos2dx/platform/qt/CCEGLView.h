@@ -34,8 +34,7 @@ THE SOFTWARE.
 #include "platform/CCEGLViewProtocol.h"
 
 
-class GLWidget;
-class QGLWidget;
+#include "CCGLWidget.h"
 
 NS_CC_BEGIN
 
@@ -60,6 +59,7 @@ public:
     void mouseMove(QMouseEvent *event);
     void mousePress(QMouseEvent *event);
     void mouseRelease(QMouseEvent *event);
+    void setAccelerometerKeyHook(ACCEL_PTRFUN func);
     void setAnimationInterval(double interval);
     QWidget * getGLWidget();
 

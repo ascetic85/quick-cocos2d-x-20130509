@@ -80,6 +80,16 @@ bool HelloWorld::init()
 
     this->schedule(schedule_selector(HelloWorld::addSpriteRamdon), 2.0f);
     this->addEditBox(0);
+
+    this->setAccelerometerEnabled(true);
+
+    // test for accelerometer
+    m_pBall = NULL;
+    {
+        m_pBall = CCSprite::create("Images/ball.png");
+        m_pBall->setPosition( ccp(size.width/2, size.height/2) );
+        addChild(m_pBall);
+    }
 	return true;
 }
 
@@ -146,4 +156,38 @@ void HelloWorld::editBoxTextChanged(cocos2d::extension::CCEditBox* editBox, cons
 void HelloWorld::editBoxReturn(CCEditBox* editBox)
 {
     CCLog("editBox %p was returned !", editBox);
+}
+
+
+#define FIX_POS(_pos, _min, _max) \
+    if (_pos < _min)        \
+    _pos = _min;        \
+else if (_pos > _max)   \
+    _pos = _max;        \
+
+void HelloWorld::didAccelerate(CCAcceleration *pAccelerationValue)
+{
+    CCLog("Acceleration method called!");
+
+    CCDirector* pDir = CCDirector::sharedDirector();
+
+    /*FIXME: Testing on the Nexus S sometimes m_pBall is NULL */
+    if ( m_pBall == NULL ) {
+        return;
+    }
+
+    CCSize ballSize  = m_pBall->getContentSize();
+
+    CCPoint ptNow  = m_pBall->getPosition();
+    CCPoint ptTemp = pDir->convertToUI(ptNow);
+
+    ptTemp.x += pAccelerationValue->x * 9.81f;
+    ptTemp.y -= pAccelerationValue->y * 9.81f;
+
+    CCSize winSize = CCDirector::sharedDirector()->getWinSize();
+
+    CCPoint ptNext = pDir->convertToGL(ptTemp);
+    FIX_POS(ptNext.x, (0+ballSize.width / 2.0), (winSize.width - ballSize.width / 2.0));
+    FIX_POS(ptNext.y, (0+ballSize.height / 2.0), (winSize.height - ballSize.height / 2.0));
+    m_pBall->setPosition(ptNext);
 }

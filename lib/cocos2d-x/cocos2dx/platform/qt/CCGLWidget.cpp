@@ -7,6 +7,7 @@ GLWidget::GLWidget(int width, int height, CCDirector* director, QWidget *parent)
     , mouseMoveFunc(NULL)
     , mousePressFunc(NULL)
     , mouseReleaseFunc(NULL)
+    , keyEventFunc(NULL)
     , m_director(director)
     , m_timer(NULL)
 {
@@ -39,6 +40,11 @@ void GLWidget::setMouseReleaseFunc(PTRFUN func)
     mouseReleaseFunc = func;
 }
 
+void GLWidget::setKeyEventFunc(ACCEL_PTRFUN func)
+{
+    keyEventFunc = func;
+}
+
 void GLWidget::mouseMoveEvent(QMouseEvent *event)
 {
     if (mouseMoveFunc)
@@ -61,6 +67,22 @@ void GLWidget::mouseReleaseEvent(QMouseEvent *event)
         mouseReleaseFunc(event);
 
     QGLWidget::mouseReleaseEvent(event);
+}
+
+void GLWidget::keyPressEvent(QKeyEvent *e)
+{
+    if (keyEventFunc)
+        keyEventFunc(e);
+
+    QGLWidget::keyPressEvent(e);
+}
+
+void GLWidget::keyReleaseEvent(QKeyEvent *e)
+{
+    if (keyEventFunc)
+        keyEventFunc(e);
+
+    QGLWidget::keyReleaseEvent(e);
 }
 
 void GLWidget::update()
