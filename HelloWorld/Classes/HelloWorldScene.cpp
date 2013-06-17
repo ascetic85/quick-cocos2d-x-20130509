@@ -86,7 +86,7 @@ bool HelloWorld::init()
     // test for accelerometer
     m_pBall = NULL;
     {
-        m_pBall = CCSprite::create("Images/ball.png");
+        m_pBall = CCSprite::create("Pea.png");
         m_pBall->setPosition( ccp(size.width/2, size.height/2) );
         addChild(m_pBall);
     }
@@ -129,7 +129,7 @@ void HelloWorld::addEditBox(float /*dt*/)
     CCSize winSize = CCDirector::sharedDirector()->getWinSize();
     CCSize editBoxSize = CCSizeMake(winSize.width, 60);
     // bottom
-    CCEditBox *m_pEditEmail = CCEditBox::create(CCSizeMake(editBoxSize.width, editBoxSize.height), CCScale9Sprite::create("extensions/yellow_edit.png"));
+    CCEditBox *m_pEditEmail = CCEditBox::create(CCSizeMake(editBoxSize.width, editBoxSize.height), CCScale9Sprite::create("yellow_edit.png"));
     m_pEditEmail->setPosition(ccp(winSize.width/2, 100));
     m_pEditEmail->setAnchorPoint(ccp(0.5, 1.0f));
     m_pEditEmail->setPlaceHolder("Email:");

@@ -260,6 +260,7 @@ void CCEGLView::swapBuffers()
     if (m_bIsInit)
     {
         /* Swap buffers */
+        m_window->makeCurrent();
         m_window->swapBuffers();
     }
 }
