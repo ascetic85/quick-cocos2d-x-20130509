@@ -19,7 +19,7 @@ class CC_DLL GLWidget : public QGLWidget
 
 public:
     GLWidget(){}
-    GLWidget(int width, int height, CCDirector* director = NULL, QWidget *parent = 0);
+    GLWidget(int width, int height, QWidget *parent = 0);
     ~GLWidget();
 
     void setMouseMoveFunc(PTRFUN func);
@@ -27,7 +27,6 @@ public:
     void setMouseReleaseFunc(PTRFUN func);
     void setKeyEventFunc(ACCEL_PTRFUN func);
 
-    void setAnimationInterval(double interval);
 protected:
     virtual void mouseMoveEvent(QMouseEvent *event);
     virtual void mousePressEvent(QMouseEvent *event);
@@ -36,7 +35,7 @@ protected:
     virtual void keyReleaseEvent(QKeyEvent *);
 
 public slots:
-    void update();
+//    void update();
 
 private:
     PTRFUN mouseMoveFunc;
@@ -44,9 +43,6 @@ private:
     PTRFUN mouseReleaseFunc;
 
     ACCEL_PTRFUN keyEventFunc;
-
-    CCDirector* m_director;
-    QTimer *m_timer;
 };
 
 #endif // _GL_WIDGET_H_

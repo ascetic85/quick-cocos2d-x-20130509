@@ -35,13 +35,15 @@ INCLUDEPATH += ../../lib/cocos2d-x/cocos2dx/platform \
         ../../lib/cocos2d-x/cocos2dx/platform/qt \
         ../../lib/cocos2d-x/cocos2dx/kazmath/include \
         ../Classes \
-        ../../lib/cocos2d-x/extensions/ \
+        ../../lib/cocos2d-x/extensions/
 
 HEADERS += \
     ../Classes/HelloWorldScene.h \
     ../Classes/AppDelegate.h \
     mainwindow.h \
-    mainwindow.h
+    ../../lib/cocos2d-x/cocos2dx/platform/qt/CCApplication.h \
+    ../../lib/cocos2d-x/cocos2dx/platform/qt/CCGLWidget.h
+
 SOURCES += \
     ../Classes/HelloWorldScene.cpp \
     ../Classes/AppDelegate.cpp \

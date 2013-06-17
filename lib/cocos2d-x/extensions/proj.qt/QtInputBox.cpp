@@ -33,7 +33,7 @@ bool LineEditor::InputBox(const char *placeHolder, char *pText, int textMaxLen
 
 void LineEditor::accept()
 {
-    this->text = m_editor->text().toLocal8Bit().constData();
+    this->text = m_editor->text().toStdString();
     QDialog::accept();
 }
 

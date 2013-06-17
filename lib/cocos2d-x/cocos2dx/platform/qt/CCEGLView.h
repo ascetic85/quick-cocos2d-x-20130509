@@ -61,7 +61,6 @@ public:
     void mousePress(QMouseEvent *event);
     void mouseRelease(QMouseEvent *event);
     void setAccelerometerKeyHook(ACCEL_PTRFUN func);
-    void setAnimationInterval(double interval);
     QWidget * getGLWidget();
 
 private:

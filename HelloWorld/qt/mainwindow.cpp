@@ -70,5 +70,6 @@ void MainWindow::inter()
 
 void MainWindow::on_actionXo_triggered()
 {
-    HelloWorld::curHelloWorld()->scheduleOnce(schedule_selector(HelloWorld::addSpriteRamdon2), 0);
+//    HelloWorld::curHelloWorld()->scheduleOnce(schedule_selector(HelloWorld::addSpriteRamdon2), 0);
+    HelloWorld::curHelloWorld()->addSpriteRamdon2(0);
 }

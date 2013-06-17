@@ -217,7 +217,7 @@ bool CCEGLView::Create()
         // Qt Window
         float iWidth = 320;
         float iHeight = 480;
-        m_window = new GLWidget(iWidth, iHeight, CCDirector::sharedDirector(), m_glParentWidget);
+        m_window = new GLWidget(iWidth, iHeight, m_glParentWidget);
 
         m_window->setMouseMoveFunc(&cocos2d::mouseMove);
         m_window->setMousePressFunc(&cocos2d::mousePress);
@@ -226,7 +226,6 @@ bool CCEGLView::Create()
         m_window->setWindowFlags(m_window->windowFlags()& ~Qt::WindowMaximizeButtonHint);
         m_window->setFixedSize(iWidth, iHeight);
         m_glParentWidget->show();
-
 
         bRet = initGL();
         if(!bRet) destroyGL();
@@ -261,6 +260,7 @@ void CCEGLView::swapBuffers()
     if (m_bIsInit)
     {
         /* Swap buffers */
+        m_window->makeCurrent();
         m_window->swapBuffers();
     }
 }
@@ -399,12 +399,6 @@ void CCEGLView::setAccelerometerKeyHook(ACCEL_PTRFUN func)
 {
     if (m_window)
         m_window->setKeyEventFunc(func);
-}
-
-void CCEGLView::setAnimationInterval(double interval)
-{
-    if (m_window)
-        m_window->setAnimationInterval(interval);
 }
 
 QWidget *CCEGLView::getGLWidget()
