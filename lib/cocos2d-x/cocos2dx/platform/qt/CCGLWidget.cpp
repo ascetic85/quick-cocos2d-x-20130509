@@ -11,7 +11,17 @@ GLWidget::GLWidget(int width, int height, CCDirector* director, QWidget *parent)
     , m_director(director)
     , m_timer(NULL)
 {
-    setAnimationInterval(1.0f / 60.0f);
+    setAutoFillBackground(false);
+    setAttribute(Qt::WA_OpaquePaintEvent);
+    setAttribute(Qt::WA_NoSystemBackground);
+    setAttribute(Qt::WA_NativeWindow);
+    setAttribute(Qt::WA_PaintOnScreen, true);
+    setAttribute(Qt::WA_StyledBackground, false);
+    setAttribute(Qt::WA_PaintUnclipped);
+
+    setAttribute(Qt::WA_InputMethodEnabled, true);
+    setAttribute(Qt::WA_KeyboardFocusChange, true);
+    setInputMethodHints(Qt::ImhNoPredictiveText);
 
     resize(width, height);
 }
@@ -85,23 +95,15 @@ void GLWidget::keyReleaseEvent(QKeyEvent *e)
     QGLWidget::keyReleaseEvent(e);
 }
 
-void GLWidget::update()
-{
-//    glewInit();
-    makeCurrent();
+//void GLWidget::update()
+//{
+////    glewInit();
+//    makeCurrent();
 
-    if (m_director)
-        m_director->mainLoop();
+//    if (m_director)
+//        m_director->mainLoop();
 
-    doneCurrent();
-}
+//    doneCurrent();
+//}
 
-void GLWidget::setAnimationInterval(double interval)
-{
-    if (!m_timer) {
-        m_timer = new QTimer(this);
-        connect(m_timer, SIGNAL(timeout()), this, SLOT(update()));
-    }
-    m_timer->start(1000 * interval);
-}
 

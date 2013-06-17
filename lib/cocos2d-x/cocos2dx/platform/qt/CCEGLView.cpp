@@ -400,12 +400,6 @@ void CCEGLView::setAccelerometerKeyHook(ACCEL_PTRFUN func)
         m_window->setKeyEventFunc(func);
 }
 
-void CCEGLView::setAnimationInterval(double interval)
-{
-    if (m_window)
-        m_window->setAnimationInterval(interval);
-}
-
 QWidget *CCEGLView::getGLWidget()
 {
     return m_glParentWidget;

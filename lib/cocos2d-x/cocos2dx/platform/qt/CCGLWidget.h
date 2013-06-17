@@ -27,7 +27,6 @@ public:
     void setMouseReleaseFunc(PTRFUN func);
     void setKeyEventFunc(ACCEL_PTRFUN func);
 
-    void setAnimationInterval(double interval);
 protected:
     virtual void mouseMoveEvent(QMouseEvent *event);
     virtual void mousePressEvent(QMouseEvent *event);
@@ -36,7 +35,7 @@ protected:
     virtual void keyReleaseEvent(QKeyEvent *);
 
 public slots:
-    void update();
+//    void update();
 
 private:
     PTRFUN mouseMoveFunc;

@@ -15,6 +15,7 @@ class CCRect;
 
 class CC_DLL CCApplication : public QApplication, public CCApplicationProtocol
 {
+    Q_OBJECT
 public:
     CCApplication(int argc, char *argv[]);
     virtual ~CCApplication();
@@ -44,11 +45,18 @@ public:
     }
     void setStartupScriptFilename(const std::string& startupScriptFile);
 
+public slots:
+    void timerUpdate();
+
 protected:
     long long           m_nAnimationInterval;
     std::string         m_startupScriptFilename;
 
     static CCApplication * sm_pSharedApplication;
+
+private:
+    QTimer *m_timer;
+    int m_refCount;
 };
 
 NS_CC_END

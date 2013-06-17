@@ -113,9 +113,6 @@ public:
 
 private:
     bool updateTexture();
-#if CC_TARGET_PLATFORM == CC_PLATFORM_QT
-    void _qtUpdateTexture(float dt);
-#endif
 
 protected:
     /** Dimensions of the label in Points */
