@@ -1,5 +1,9 @@
 quick-cocos2d-x + Qt
 
+ref: 
+- [https://github.com/honghui/cocos2d-x](https://github.com/honghui/cocos2d-x)
+- [https://projects.developer.nokia.com/cocos2dxqt/wiki](https://projects.developer.nokia.com/cocos2dxqt/wiki)
+
 ## CHINESE => [README_CN.md](https://github.com/ascetic85/quick-cocos2d-x-20130509/blob/master/README_CN.md)
 
 [quick-cocos2d-x](https://github.com/dualface/quick-cocos2d-x) is a **quick** framework, based cocos2d-x. Make mobile games in Lua.
