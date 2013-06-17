@@ -19,7 +19,7 @@ class CC_DLL GLWidget : public QGLWidget
 
 public:
     GLWidget(){}
-    GLWidget(int width, int height, CCDirector* director = NULL, QWidget *parent = 0);
+    GLWidget(int width, int height, QWidget *parent = 0);
     ~GLWidget();
 
     void setMouseMoveFunc(PTRFUN func);
@@ -43,9 +43,6 @@ private:
     PTRFUN mouseReleaseFunc;
 
     ACCEL_PTRFUN keyEventFunc;
-
-    CCDirector* m_director;
-    QTimer *m_timer;
 };
 
 #endif // _GL_WIDGET_H_
