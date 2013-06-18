@@ -41,7 +41,8 @@ INCLUDEPATH += ../../lib/cocos2d-x/cocos2dx/platform \
         ../../lib/lua_extensions/ \
         ../../lib/cocos2dx_extensions_luabinding/ \
         ../../lib/cocos2d-x/scripting/lua/cocos2dx_support \
-        ../../lib/cocos2d-x/scripting/lua/tolua/
+        ../../lib/cocos2d-x/scripting/lua/tolua/    \
+        ../../lib/cocos2dx_extra/extra/luabinding/
 
 HEADERS += \
     ../Classes/HelloWorldScene.h \

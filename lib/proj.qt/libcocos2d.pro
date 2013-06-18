@@ -41,9 +41,12 @@ contains(COCOSMODULES, cocosdenshion) {
 }
 
 contains(COCOSMODULES, lua) {
+    DEFINES += CC_LUA_ENGINE_ENABLED=1
     include(lua.pri)
     include(lua_extensions.pri)
     include(cocos2dx_extensions_luabinding.pri)
+    include(cocos2dx_extra.pri)
+
 }
 
 win32 {

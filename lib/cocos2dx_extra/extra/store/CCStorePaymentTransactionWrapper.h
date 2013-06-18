@@ -11,7 +11,12 @@ class CCStorePaymentTransactionWrapper
 {
 public:
     static CCStorePaymentTransactionWrapper* createWithTransaction(void* transactionObj);
-    ~CCStorePaymentTransactionWrapper(void);
+    ~CCStorePaymentTransactionWrapper(void)
+#if CC_TARGET_PLATFORM != CC_PLATFORM_QT
+            ;
+#else
+    {}
+#endif
     
     void* getTransactionObj(void)
     {

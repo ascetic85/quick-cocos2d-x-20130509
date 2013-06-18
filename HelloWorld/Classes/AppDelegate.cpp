@@ -8,6 +8,8 @@
 #include "CCLuaEngine.h"
 #include "lua_extensions.h"
 #include "cocos2dx_extensions_luabinding.h"
+#include "cocos2dx_extra_luabinding.h"
+
 USING_NS_CC;
 
 AppDelegate::AppDelegate(int argc, char *argv[])
@@ -31,7 +33,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
     // set FPS. the default value is 1.0/60 if you don't call this
     pDirector->setAnimationInterval(1.0 / 60 );
-#if 1
+#if 0
     // create a scene. it's an autorelease object
     CCScene *pScene = HelloWorld::scene();
 
@@ -51,7 +53,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     // load cocos2dx_extensions luabinding
     luaopen_cocos2dx_extensions_luabinding(L);
     // load cocos2dx_extra luabinding
-//    luaopen_cocos2dx_extra_luabinding(L);
+    luaopen_cocos2dx_extra_luabinding(L);
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     luaopen_cocos2dx_extra_ios_iap_luabinding(L);
 #endif

@@ -43,8 +43,9 @@ void CCNativeWin32::showAlertViewWithDelegate(CCAlertViewDelegate *delegate)
 {
 	wstring title(m_alertViewTitle.begin(), m_alertViewTitle.end());
 	wstring message(m_alertViewMessage.begin(), m_alertViewMessage.end());
-	int button = MessageBox(NULL, message.c_str(), title.c_str(), MB_OKCANCEL);
-	if (button == IDOK || button == IDYES)
+//	int button = MessageBox(NULL, message.c_str(), title.c_str(), MB_OKCANCEL);
+//	if (button == IDOK || button == IDYES)
+    if (1)
 	{
 		delegate->alertViewClickedButtonAtIndex(0);
 	}
@@ -67,11 +68,12 @@ void CCNativeWin32::showAlertViewWithLuaListener(LUA_FUNCTION listener)
 {
 	wstring title(m_alertViewTitle.begin(), m_alertViewTitle.end());
 	wstring message(m_alertViewMessage.begin(), m_alertViewMessage.end());
-	int button = MessageBox(NULL, message.c_str(), title.c_str(), MB_OKCANCEL);
-    
+//    int button = MessageBox(NULL, message.c_str(), title.c_str(), MB_OKCANCEL);
+
     CCLuaValueDict event;
     event["action"] = CCLuaValue::stringValue("clicked");
-	if (button == IDOK || button == IDYES)
+//    if (button == IDOK || button == IDYES)
+    if (1)
 	{
 		event["buttonIndex"] = CCLuaValue::intValue(1);
 	}
@@ -92,12 +94,12 @@ void CCNativeWin32::removeAlertViewLuaListener(void)
 
 const string CCNativeWin32::getInputText(const char* title, const char* message, const char* defaultValue)
 {
-	HWND handle = CCEGLView::sharedOpenGLView()->getHWnd();
+//    HWND handle = CCEGLView::sharedOpenGLView()->getHWnd();
 
 	CCNativeWin32InputBoxStruct inputbox;
 	inputbox.title = string(title ? title : "INPUT TEXT");
 	inputbox.message = string(message ? message : "INPUT TEXT, PRESS ENTER");
 	inputbox.value = string(defaultValue ? defaultValue : "");
-	SendMessage(handle, WM_CUT, 998, (LPARAM)&inputbox);
+//    SendMessage(handle, WM_CUT, 998, (LPARAM)&inputbox);
 	return inputbox.value;
 }
