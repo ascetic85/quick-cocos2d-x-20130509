@@ -400,7 +400,8 @@ int CCLuaStack::loadChunksFromZip(lua_State *L)
         {
             if (size == 0 || !buffer)
             {
-                CCLOG("CCLoadChunksFromZip() - read source file %s failure", zipFilePath.c_str());
+                CCLOG("
+                      CCLoadChunksFromZip() - read source file %s failure", zipFilePath.c_str());
                 break;
             }
             

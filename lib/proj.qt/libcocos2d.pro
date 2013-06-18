@@ -8,6 +8,8 @@ QT       += core gui opengl
 
 TEMPLATE = lib
 
+COCOSMODULES += lua cocosdenshion extensions
+
 include(actions.pri)
 include(base_nodes.pri)
 include(cocoa.pri)
@@ -30,7 +32,19 @@ include(textures.pri)
 include(tileMap_parallax_nodes.pri)
 include(touch_dispatcher.pri)
 
-include(extensions.pri)
+contains(COCOSMODULES, extensions) {
+    include(extensions.pri)
+}
+
+contains(COCOSMODULES, cocosdenshion) {
+    include(cocosdenshion.pri)
+}
+
+contains(COCOSMODULES, lua) {
+    include(lua.pri)
+    include(lua_extensions.pri)
+    include(cocos2dx_extensions_luabinding.pri)
+}
 
 win32 {
     TARGET = libcocos2d
@@ -95,6 +109,10 @@ unix:macx {
 DEFINES += _USRDLL
 DEFINES += __QT__
 DEFINES += CC_UNDER_QT
+
+# for zip
+DEFINES += USE_FILE32API
+
 INCLUDEPATH += ../cocos2d-x/cocos2dx/platform \
         ../cocos2d-x/cocos2dx/platform/qt \
         ../cocos2d-x/cocos2dx/cocoa \

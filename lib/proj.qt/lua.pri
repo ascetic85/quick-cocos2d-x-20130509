@@ -40,7 +40,7 @@ SOURCES += \
 ../cocos2d-x/scripting/lua//tolua/tolua_map.c \
 ../cocos2d-x/scripting/lua//tolua/tolua_push.c \
 ../cocos2d-x/scripting/lua//tolua/tolua_to.c \
-.../cocos2d-x/scripting/lua//cocos2dx_support/CCLuaBridge.cpp \
+../cocos2d-x/scripting/lua//cocos2dx_support/CCLuaBridge.cpp \
 ../cocos2d-x/scripting/lua//cocos2dx_support/CCLuaEngine.cpp \
 ../cocos2d-x/scripting/lua//cocos2dx_support/CCLuaStack.cpp \
 ../cocos2d-x/scripting/lua//cocos2dx_support/CCLuaValue.cpp \

@@ -40,7 +40,7 @@ void CCLog(const char * pszFormat, ...)
     va_start(ap, pszFormat);
     qvsnprintf(szBuf, MAX_LEN, pszFormat, ap);
     va_end(ap);
-    qDebug(szBuf);
+    qDebug() << szBuf;
 }
 
 void CCMessageBox(const char * pszMsg, const char * pszTitle)

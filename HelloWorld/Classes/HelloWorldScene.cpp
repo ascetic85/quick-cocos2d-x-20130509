@@ -136,7 +136,6 @@ void HelloWorld::addEditBox(float /*dt*/)
     m_pEditEmail->setInputMode(kEditBoxInputModeEmailAddr);
     m_pEditEmail->setDelegate(this);
     addChild(m_pEditEmail);
-#endif
 }
 
 void HelloWorld::editBoxEditingDidBegin(cocos2d::extension::CCEditBox* editBox)

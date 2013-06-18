@@ -1,7 +1,10 @@
 # find ../cocos2d-x/extensions/ -name "*.cpp" 
 # vim 
 # :%s/$/ \\/ 
- 
+INCLUDEPATH += \
+../cocos2d-x/extensions//GUI/CCControlExtension/ \
+../cocos2d-x/extensions//GUI/CCEditBox/
+
 SOURCES += \ 
 ../cocos2d-x/extensions//CCBReader/CCBAnimationManager.cpp \
 ../cocos2d-x/extensions//CCBReader/CCBFileLoader.cpp \

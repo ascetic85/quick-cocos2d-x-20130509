@@ -28,6 +28,8 @@ unix:macx {
 DEFINES += _USRDLL
 DEFINES += __QT__
 DEFINES += CC_UNDER_QT
+# for zip
+DEFINES += USE_FILE32API
 
 INCLUDEPATH += ../../lib/cocos2d-x/cocos2dx/platform \
         ../../lib/cocos2d-x/cocos2dx/include \
@@ -35,7 +37,11 @@ INCLUDEPATH += ../../lib/cocos2d-x/cocos2dx/platform \
         ../../lib/cocos2d-x/cocos2dx/platform/qt \
         ../../lib/cocos2d-x/cocos2dx/kazmath/include \
         ../Classes \
-        ../../lib/cocos2d-x/extensions/
+        ../../lib/cocos2d-x/extensions/ \
+        ../../lib/lua_extensions/ \
+        ../../lib/cocos2dx_extensions_luabinding/ \
+        ../../lib/cocos2d-x/scripting/lua/cocos2dx_support \
+        ../../lib/cocos2d-x/scripting/lua/tolua/
 
 HEADERS += \
     ../Classes/HelloWorldScene.h \
