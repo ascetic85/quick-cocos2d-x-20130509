@@ -54,6 +54,8 @@ win32 {
 
     # You may need to change this include directory
     DEFINES += WIN32
+    # for lua socket
+    DEFINES += _WIN32
 #    DEFINES += _WINDOWS
     INCLUDEPATH += \
             ../cocos2d-x/cocos2dx/platform/third_party/win32/iconv \
@@ -132,6 +134,7 @@ CONFIG(debug, debug|release) {
 CONFIG(release, debug|release) {
     OBJECTS_DIR = release/
     DESTDIR = ../../Release.qt
+    DEFINES += TOLUA_RELEASE
 }
 
 unix:!symbian {

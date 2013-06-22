@@ -18,12 +18,20 @@ SOURCES += \
 ../lua_extensions//socket/mime.c \
 ../lua_extensions//socket/options.c \
 ../lua_extensions//socket/select.c \
-../lua_extensions//socket/serial.c \
 ../lua_extensions//socket/socket_scripts.c \
 ../lua_extensions//socket/tcp.c \
 ../lua_extensions//socket/timeout.c \
 ../lua_extensions//socket/udp.c \
-../lua_extensions//socket/unix.c \
-../lua_extensions//socket/usocket.c \
 ../lua_extensions//zlib/lua_zlib.c
 
+!win32 {
+    SOURCES += \
+../lua_extensions//socket/unix.c \
+../lua_extensions//socket/usocket.c \
+../lua_extensions//socket/serial.c
+}
+
+win32 {
+    SOURCES += ../lua_extensions//socket/wsocket.c
+    LIBS += -lWs2_32
+}
