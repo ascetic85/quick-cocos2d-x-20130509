@@ -50,10 +50,15 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
     // load lua extensions
     luaopen_lua_extensions(L);
+
+    // FIXME:
+#ifndef Q_OS_WIN
     // load cocos2dx_extensions luabinding
     luaopen_cocos2dx_extensions_luabinding(L);
     // load cocos2dx_extra luabinding
     luaopen_cocos2dx_extra_luabinding(L);
+#endif
+
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     luaopen_cocos2dx_extra_ios_iap_luabinding(L);
 #endif

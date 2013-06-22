@@ -1,6 +1,6 @@
 QT       += core gui opengl
 
-TARGET = HelloWorld
+TARGET = HelloLua
 TEMPLATE = app
 
 CONFIG(debug, debug|release) {
@@ -14,6 +14,7 @@ CONFIG(release, debug|release) {
 
 win32 {
     LIBS += -L$(DESTDIR) -llibcocos2d
+    CONFIG += console
 }
 
 unix {
@@ -43,21 +44,22 @@ INCLUDEPATH += ../../lib/cocos2d-x/cocos2dx/platform \
         ../../lib/cocos2d-x/scripting/lua/cocos2dx_support \
         ../../lib/cocos2d-x/scripting/lua/lua    \
         ../../lib/cocos2d-x/scripting/lua/tolua    \
-        ../../lib/cocos2dx_extra/extra/luabinding
+        ../../lib/cocos2dx_extra/extra/luabinding   \
+        ../../lib/cocos2d-x/CocosDenshion/include    \
 
 HEADERS += \
-    ../Classes/HelloWorldScene.h \
+#    ../Classes/HelloWorldScene.h \
     ../Classes/AppDelegate.h \
-    mainwindow.h \
+#    mainwindow.h \
     ../../lib/cocos2d-x/cocos2dx/platform/qt/CCApplication.h \
     ../../lib/cocos2d-x/cocos2dx/platform/qt/CCGLWidget.h
 
 SOURCES += \
-    ../Classes/HelloWorldScene.cpp \
+#    ../Classes/HelloWorldScene.cpp \
     ../Classes/AppDelegate.cpp \
     main.cpp \
-    mainwindow.cpp
+#    mainwindow.cpp
 
-FORMS += \
-    mainwindow.ui
+#FORMS += \
+#    mainwindow.ui
 
