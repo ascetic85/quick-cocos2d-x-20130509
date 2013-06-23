@@ -151,14 +151,15 @@ local function main()
 
         local function menuCallbackClosePopup()
             -- stop test sound effect
-            SimpleAudioEngine:sharedEngine():stopEffect(effectID)
+            -- SimpleAudioEngine:sharedEngine():stopEffect(effectID)
             menuPopup:setVisible(false)
         end
 
         local function menuCallbackOpenPopup()
             -- loop test sound effect
-            local effectPath = CCFileUtils:sharedFileUtils():fullPathFromRelativePath("effect1.wav")
-            effectID = SimpleAudioEngine:sharedEngine():playEffect(effectPath)
+            --local effectPath = CCFileUtils:sharedFileUtils():fullPathForFilename("effect1.wav")
+            --local effectPath = CCFileUtils:sharedFileUtils():fullPathFromRelativePath("effect1.wav")
+            --effectID = SimpleAudioEngine:sharedEngine():playEffect(effectPath)
             menuPopup:setVisible(true)
         end
 
@@ -188,10 +189,10 @@ local function main()
 
     -- uncomment below for the BlackBerry version
     -- local bgMusicPath = CCFileUtils:sharedFileUtils():fullPathFromRelativePath("background.ogg")
-    local bgMusicPath = CCFileUtils:sharedFileUtils():fullPathFromRelativePath("background.mp3")
-    SimpleAudioEngine:sharedEngine():playBackgroundMusic(bgMusicPath, true)
-    local effectPath = CCFileUtils:sharedFileUtils():fullPathFromRelativePath("effect1.wav")
-    SimpleAudioEngine:sharedEngine():preloadEffect(effectPath)
+    --local bgMusicPath = CCFileUtils:sharedFileUtils():fullPathFromRelativePath("background.mp3")
+    --SimpleAudioEngine:sharedEngine():playBackgroundMusic(bgMusicPath, true)
+    --local effectPath = CCFileUtils:sharedFileUtils():fullPathFromRelativePath("effect1.wav")
+    --SimpleAudioEngine:sharedEngine():preloadEffect(effectPath)
 
     -- run
     local sceneGame = CCScene:create()

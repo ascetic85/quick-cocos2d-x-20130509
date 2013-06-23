@@ -51,13 +51,13 @@ HEADERS += \
 #    ../Classes/HelloWorldScene.h \
     ../Classes/AppDelegate.h \
 #    mainwindow.h \
-    ../../lib/cocos2d-x/cocos2dx/platform/qt/CCApplication.h \
-    ../../lib/cocos2d-x/cocos2dx/platform/qt/CCGLWidget.h
+    ../../lib/cocos2d-x/cocos2dx/platform/qt/CCApplication.h
+#    ../../lib/cocos2d-x/cocos2dx/platform/qt/CCGLWidget.h
 
 SOURCES += \
 #    ../Classes/HelloWorldScene.cpp \
     ../Classes/AppDelegate.cpp \
-    main.cpp \
+    main.cpp
 #    mainwindow.cpp
 
 #FORMS += \
