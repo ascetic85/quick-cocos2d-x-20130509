@@ -7,6 +7,10 @@ ENV
 * Qt 5.*
 * Using Clang on OS X
 
+HelloLua
+![](https://raw.github.com/ascetic85/quick-cocos2d-x-20130509/QtPort/images/HelloLua.png)
+
+
 ## CHINESE => [README_CN.md](https://github.com/dualface/quick-cocos2d-x/blob/master/README_CN.md)
 
 [quick-cocos2d-x](https://github.com/dualface/quick-cocos2d-x) is a **quick** framework, based cocos2d-x. Make mobile games in Lua.
