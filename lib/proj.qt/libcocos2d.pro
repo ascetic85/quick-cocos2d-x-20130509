@@ -155,3 +155,6 @@ SOURCES += \
     ../cocos2d-x/cocos2dx/CCDirector.cpp \
     ../cocos2d-x/cocos2dx/CCConfiguration.cpp \
     ../cocos2d-x/cocos2dx/CCCamera.cpp
+
+OTHER_FILES += \
+    libcocos2d.pri
