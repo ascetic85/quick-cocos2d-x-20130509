@@ -1,11 +1,11 @@
 #include "cocos2d.h"
 #include "AppDelegate.h"
-//#include "SimpleAudioEngine.h"
+#include "SimpleAudioEngine.h"
 #include "script_support/CCScriptSupport.h"
 #include "CCLuaEngine.h"
 
 USING_NS_CC;
-//using namespace CocosDenshion;
+using namespace CocosDenshion;
 
 AppDelegate::AppDelegate(int argc, char *argv[])
     : CCApplication(argc, argv)
@@ -17,7 +17,7 @@ AppDelegate::AppDelegate(int argc, char *argv[])
 AppDelegate::~AppDelegate()
 {
     // end simple audio engine here, or it may crashed on win32
-//    SimpleAudioEngine::sharedEngine()->end();
+    SimpleAudioEngine::sharedEngine()->end();
     //CCScriptEngineManager::purgeSharedManager();
 }
 
@@ -59,12 +59,12 @@ bool AppDelegate::applicationDidFinishLaunching()
 void AppDelegate::applicationDidEnterBackground()
 {
     CCDirector::sharedDirector()->stopAnimation();
-//    SimpleAudioEngine::sharedEngine()->pauseBackgroundMusic();
+    SimpleAudioEngine::sharedEngine()->pauseBackgroundMusic();
 }
 
 // this function will be called when the app is active again
 void AppDelegate::applicationWillEnterForeground()
 {
     CCDirector::sharedDirector()->startAnimation();
-//    SimpleAudioEngine::sharedEngine()->resumeBackgroundMusic();
+    SimpleAudioEngine::sharedEngine()->resumeBackgroundMusic();
 }

@@ -36,6 +36,8 @@ THE SOFTWARE.
 #include "CCTouch.h"
 #include "CCGLWidget.h"
 
+/// Qt
+#include <QDesktopWidget>
 
 NS_CC_BEGIN
 
@@ -312,11 +314,19 @@ void CCEGLView::setFrameSize(float width, float height)
 
 void CCEGLView::centerWindow()
 {
-
+    if (m_glParentWidget && !m_glParentWidget->parent()) {
+        QDesktopWidget *w = qApp->desktop();
+        QRect rect = w->screenGeometry();
+        m_glParentWidget->move((rect.width()-m_glParentWidget->width())/2.0f
+                              ,(rect.height()-m_glParentWidget->height())/2.0f);
+    }
 }
 
 void CCEGLView::moveWindow(int left, int top)
 {
+    if (m_glParentWidget && !m_glParentWidget->parent()) {
+        m_glParentWidget->move(left, top);
+    }
 }
 
 void CCEGLView::setViewPortInPoints(float x , float y , float w , float h)

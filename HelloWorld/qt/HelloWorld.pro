@@ -17,6 +17,7 @@ CONFIG(release, debug|release) {
 
 win32 {
     LIBS += -L$(DESTDIR) -llibcocos2d
+    CONFIG += console
 }
 
 unix {
