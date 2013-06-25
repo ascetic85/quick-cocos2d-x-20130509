@@ -12,8 +12,8 @@ HelloLua
   ![](https://raw.github.com/ascetic85/quick-cocos2d-x-20130509/QtPort/images/HelloLua.png)
 
 CoinFlip
-
- 	![](https://raw.github.com/ascetic85/quick-cocos2d-x-20130509/QtPort/images/QuickCoinFlip.png)
+  
+  ![](https://raw.github.com/ascetic85/quick-cocos2d-x-20130509/QtPort/images/QuickCoinFlip.png)
  	
 ## CHINESE => [README_CN.md](https://github.com/dualface/quick-cocos2d-x/blob/master/README_CN.md)
 
