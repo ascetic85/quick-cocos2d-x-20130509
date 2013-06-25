@@ -2,6 +2,16 @@
 #ifndef __COCOS2DX_EXTRA_LUABINDING_H_
 #define __COCOS2DX_EXTRA_LUABINDING_H_
 
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_QT)
+    #include <QtCore/qglobal.h>
+    #undef TOLUA_API
+    #if defined(_USRDLL)
+        #define TOLUA_API     Q_DECL_EXPORT
+    #else 		/* use a DLL library */
+        #define TOLUA_API     Q_DECL_IMPORT
+    #endif
+#endif
+
 extern "C" {
 #include "lua.h"
 #include "tolua++.h"
