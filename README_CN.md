@@ -1,3 +1,4 @@
+cocos2d-x-3.0alpha 中看到了Qt后端支持, 把它的.pro收纳囊肿! 其它的, 看有啥可以借鉴的吧.
 
 [quick-cocos2d-x](https://github.com/dualface/quick-cocos2d-x) 是一个可以让您觉得“爽快”的 cocos2d-x 的扩展版。基于 cocos2d-x，完全的跨平台能力、优异的性能和可靠性。而 quick-cocos2d-x 在这一切的基础上，添加了完善的 Lua 脚本语言支持，让开发者可以使用 Lua 这种简单易用的脚本语言完成商业品质的移动游戏。
 
